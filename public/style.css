@@ -1,0 +1,19 @@
+body{
+    background-color: black;
+    color: red;
+    font-family: monospace;
+    text-align: center;
+}
+.fsec{
+    height: 50vw;
+    background: url("gotham.jpg");
+    background-size: cover;
+}
+h1{
+    padding-top: 20px;
+    transition: all 500ms;
+}
+h1:hover{
+    color: blue;
+    transition: all 500;
+}

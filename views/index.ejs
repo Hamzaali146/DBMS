@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DBMS Project</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CopCompanion</title>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
-<body>
-    <div class="container">
-        <div class="fsec">
-            <h1>DBMS ProJECT</h1>
-            <h2><%= projectName %></h2>
-        </div>
+
+<body id="app">
+  <form class="container" action="/submit" method="post">
+    <div class="horizontal-container">
+      <h3 class="sitetitle">
+        CopCompanion
+      </h3>
+
     </div>
-    
+    </h1> 
+    <div class="answer-container" >
+      <input type="text" name="usName" id="userInput" placeholder="username" autofocus autocomplete="off">
+
+    </div>
+    <div class="answer-container">
+      <input type="password" name="answer" id="userInput" placeholder="Password" autofocus autocomplete="off">
+
+    </div>
+    <button type="submit">LOGIN
+    </button>
+
+  </form>
+  <script>
+
+
+  </script>
 </body>
+
 </html>
