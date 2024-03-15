@@ -14,6 +14,7 @@ h1{
     transition: all 500ms;
 }
 h1:hover{
-    color: blue;
+    color: red;
     transition: all 500;
+    cursor: pointer;
 }

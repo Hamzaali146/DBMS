@@ -33,14 +33,21 @@ connection.query('SELECT * FROM officers', (error, results, fields) => {
 
 
 app.get('/', (req, res) => {
-    let projectName = "Police Management System"
+    let projectName = "Police Information System"
     res.render("index",{projectName:projectName})
 })
 app.get('/database', (req, res) => {
-    let projectName = "Hospital Management System"
+    let projectName = "Police Information System"
     res.render("database")
 })
-
+app.get('/about', (req, res) => {
+  let projectName = "Police Information System"
+  res.render("aboutus")
+})
+app.get('/complain', (req, res) => {
+  let projectName = "Police Information System"
+  res.render("complain")
+})
 app.post('/submit', (req, res) => {
   let answer = req.body.answer;
   let usName =req.body.usName;
