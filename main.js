@@ -1,4 +1,3 @@
-// const ejs = require('ejs')
 import express from "express";
 import bodyParser from "body-parser";
 const app = express()
@@ -26,10 +25,6 @@ connection.query('SELECT * FROM officers', (error, results, fields) => {
     obj = results
     console.log('Query results:', obj);
   });
-// connection.connect(function(err){
-//     if(err) throw err;
-//     console.log("Connection Successfull")
-// })
 
 
 app.get('/', (req, res) => {
@@ -51,7 +46,6 @@ app.get('/complain', (req, res) => {
 app.post('/submit', (req, res) => {
   let answer = req.body.answer;
   let usName =req.body.usName;
-  // console.log(typeof(answer))
   for (const key in obj) {
     const element = obj[key];
     if(element.firstName.toLowerCase()==usName.toLowerCase() && element.officerID === parseInt(answer)){
