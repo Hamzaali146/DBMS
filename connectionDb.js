@@ -11,7 +11,7 @@ let connection = mysql.createPool({
 });
 
 let obj = []
-connection.query(`SELECT * FROM OFFICERS WHERE OFFICER_RANK = "Lieutenant" `, (error, results, fields) => {
+connection.query(`SELECT * FROM OFFICERS `, (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
