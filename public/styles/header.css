@@ -1,0 +1,54 @@
+body{
+    color: white;
+  }
+  .header{
+    display: flex;
+    justify-content: center;
+   padding: 20px; 
+   align-items: center;
+   font-size: 18px;
+   /* gap: 10px; */
+   /* width: 100%; */
+  }
+  .menu{
+    width: 50vw;
+  }
+  .menu ul{
+    display: flex;
+    list-style: none;
+    gap: 100px;
+    align-items: center;
+    justify-content:left;
+    
+    /* justify-content: space-between; */
+  }
+  .menu ul li a{
+    text-decoration: none;
+    color: white;
+    transition: all 500ms;
+  }
+  .menu ul li a:hover{
+    color: blue;
+    transition: all 500ms;
+    font-size: 19px;
+  }
+  .logo{
+    font-size: 18px;
+    transition: all 500ms;
+    width: 30vw;
+    text-align: center;
+  }
+  .logo:hover{
+    color: blue;
+    transition: all 500ms;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .btndiv{
+    width: 20vw;
+  }
+  .btndiv a{
+    text-decoration: none;
+    color: #fff;
+    font-size: large;
+  }

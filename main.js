@@ -31,10 +31,13 @@ app.get('/', (req, res) => {
     let projectName = "Police Information System"
     res.render("index",{projectName:projectName})
 })
-app.get('/database', (req, res) => {
+
+app.get('/login', (req, res) => {
     let projectName = "Police Information System"
-    res.render("database")
+    res.render("login")
 })
+
+
 app.get('/about', (req, res) => {
   let projectName = "Police Information System"
   res.render("aboutus")

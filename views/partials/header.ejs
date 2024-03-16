@@ -4,48 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cop</title>
-    <style>
-      body{
-        color: white;
-      }
-      .header{
-        display: flex;
-        justify-content: center;
-       padding: 20px; 
-       align-items: center;
-       font-size: 18px;
-       gap: 10px;
-      }
-      .menu ul{
-        display: flex;
-        list-style: none;
-        gap: 22px;
-        align-items: center;
-        
-        /* justify-content: space-between; */
-      }
-      .menu ul li a{
-        text-decoration: none;
-        color: white;
-        transition: all 500ms;
-      }
-      .menu ul li a:hover{
-        color: blue;
-        transition: all 500ms;
-        font-size: 19px;
-      }
-      .logo{
-        font-size: 18px;
-        transition: all 500ms;
-      }
-      .logo:hover{
-        color: blue;
-        transition: all 500ms;
-        font-size: 20px;
-        cursor: pointer;
-      }
-    </style>
-    <!-- <link rel="stylesheet" href="/styles/header.css"> -->
+    <link rel="stylesheet" href="/styles/header.css">
+
 </head>
 <body>
     <div class="header">
@@ -56,14 +16,16 @@
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/about">about</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="/complain">complain</a>
+            <a href="/complain">Complain</a>
           </li>
         </ul>
       </div>
-      <div class="btn"></div>
+      <div class="btndiv">
+        <button class="btn"><a href="/login">Login</a></button>
+      </div>
     </div>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <form class="container" action="/submit" method="post">
+        <div class="horizontal-container">
+          <h3 class="sitetitle">
+            Police Information System
+          </h3>
+    
+        </div>
+        </h1> 
+        <div class="answer-container" >
+          <input type="text" name="usName" id="userInput" placeholder="username" autofocus autocomplete="off">
+    
+        </div>
+        <div class="answer-container">
+          <input type="password" name="answer" id="userInput" placeholder="Password" autofocus autocomplete="off">
+    
+        </div>
+        <button type="submit">LOGIN
+        </button>
+    
+      </form>
+</body>
+</html>

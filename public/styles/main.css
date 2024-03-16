@@ -68,7 +68,8 @@ button {
 
 button:hover {
   /* background-color: #ffd500; */
-  background-color: rgb(228, 10, 10);
+  /* background-color: rgb(228, 10, 10); */
+  background-color: rgb(207, 30, 30);
   transition: all 500ms;
 }
 
