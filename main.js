@@ -40,6 +40,7 @@ app.get('/', (req, res) => {
     res.render("index",{projectName:projectName})
 })
 
+
 app.get('/login', (req, res) => {
     let projectName = "Police Information System"
     res.render("login")
@@ -54,6 +55,12 @@ app.get('/complain', (req, res) => {
   let projectName = "Police Information System"
   res.render("complain")
 })
+
+app.get('/test', (req, res) => {
+  let projectName = "Police Information System"
+  res.render("test")
+})
+
 app.post('/submit', (req, res) => {
   let answer = req.body.answer;
   let usName =req.body.usName;

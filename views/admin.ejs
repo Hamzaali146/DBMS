@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
-    <title>admin</title>
+    <title>test</title>
     <style>
         body{
             color: antiquewhite;
@@ -13,11 +13,67 @@
         h1:hover{
             color: red;
             transition: all 500ms;
+            cursor: pointer;
+        }
+        .hero{
+            display: flex;
+            padding: 20px;
+            justify-content: space-around;
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(128, 128, 128, 0.26);
+            width: 15vw;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+        }
+        .card h1{
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <%- include('partials/header.ejs') %>
     <h1>Welcome To admin panel</h1>
+    <div class="hero">
+        <div class="card">
+            <p>Total On DutyOfficers</p>
+            <h1 class="officerCount">
+                505
+            </h1>
+            
+        </div>
+
+        <div class="card">
+            <p>Total Departments</p>
+            <h1 class="departCount">
+                53
+            </h1>
+            
+        </div>
+
+        <div class="card">
+            <p>Total Criminal Records</p>
+            <h1 class="recordCount">
+                2344
+            </h1>
+            
+        </div>
+
+        <div class="card">
+            <p>Total Cases</p>
+            <h1 class="casesCount">
+                1003
+            </h1>
+            
+        </div>
+    </div>
+    <!-- <script>
+        let a = document.querySelector("casesCount").innerHTML
+        a = 105
+    </script> -->
 </body>
 </html>
