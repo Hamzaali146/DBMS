@@ -1,5 +1,6 @@
 body{
     color: white;
+    /* background-color: rgba(128, 128, 128, 0.096); */
   }
   .header{
     display: flex;
@@ -9,6 +10,8 @@ body{
    font-size: 18px;
    /* gap: 10px; */
    /* width: 100%; */
+   background-color: rgba(128, 128, 128, 0.103);
+   border-radius: 20px;
   }
   .menu{
     width: 50vw;
