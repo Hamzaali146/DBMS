@@ -15,14 +15,7 @@ let connection = mysql.createPool({
     waitForConnections: true,
     connectionLimit : 10,
     queueLimit:0
-    // host: "127.0.0.1",
-    // user: "root",
-    // password: "familyhk1",
-    // database:"copcompanion",
-    // port:"3306",
-    // waitForConnections: true,
-    // connectionLimit : 10,
-    // queueLimit:0
+  
 });
 let obj = []
 connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
