@@ -125,11 +125,10 @@ button:hover {
   color: gray;
   transition: all 500ms;
   font-size: 26px;
-  font-family: monospace;
   cursor: pointer;
 }
 .sitetitle:hover{
-  color: blue;
+  color: red;
   transition: all 500ms;
   cursor: pointer;
 }

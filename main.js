@@ -45,7 +45,7 @@ connection.query('SELECT * FROM POLICE_DEPARTMENT', (error, results, fields) => 
     return;
   }
   depart = results
-  console.log('Query results:', depart);
+  // console.log('Query results:', depart);
 });
 
 connection.query('SELECT * FROM CRIMINAL_RECORDS', (error, results, fields) => {
@@ -55,6 +55,7 @@ connection.query('SELECT * FROM CRIMINAL_RECORDS', (error, results, fields) => {
   }
   record = results
   console.log('Query results:', record);
+  console.log(record.length)
 });
 
 app.get('/', (req, res) => {
@@ -96,6 +97,8 @@ app.post('/submit', (req, res) => {
   res.render("login")
 })
 
+// API FOR ALL MY TABLES FROM MYSQL DATABASE
+
 app.post('/officer', (req, res) => {
   res.json(obj)
 })
@@ -105,7 +108,7 @@ app.post('/department', (req, res) => {
 })
 
 app.post('/record', (req, res) => {
-  res.json(depart)
+  res.json(record)
 })
 
 

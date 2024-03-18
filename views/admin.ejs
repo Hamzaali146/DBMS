@@ -43,7 +43,30 @@
         h4 {
             text-align: center;
         }
+        li ol{
+            margin: 2px;
+            padding: 0;
+        }
+        .container{
+            background-color: rgba(128, 128, 128, 0.103);
+        }
+        input{
+            background-color: transparent;
+        }
+        .sitetitle{
+            color: white    ;
+        }
+        .heroBody{
+            text-align: center;
+        }
+        button{
+            margin-top: 20px;
+        }
+        input{
+            color: white    ;
+        }
     </style>
+
 </head>
 
 <body>
@@ -81,6 +104,41 @@
                 </h1>
 
             </div>
+            
+        </div>
+        <div class="heroBody">
+             <!-- You can add more records of <strong>Cases</strong> , <strong>Criminals</strong> ,
+             <strong>Departments</strong> and <strong>officers</strong> -->
+             <div class="txt">
+             <span style="color: red;">Note :</span> If you want to see all details of on duty officers just type <strong>Officers</strong> on <strong>Information window</strong><br>
+                <li style="padding: 0px; list-style-type: circle;">
+                    <ol>Type <strong>Departments</strong> To View details for Departments</ol>
+                    <ol>Type <strong>Records</strong> To View details for criminal records</ol>
+                    <ol>Type <strong>Cases</strong> To View Cases</ol>
+                </li>
+            </div>
+             <div class="container">
+                <div class="horizontal-container">
+                  <h3 class="sitetitle">
+                    Information Window
+                  </h3>
+            
+                </div>
+                </h1> 
+
+                <div class="answer-container" >
+                  <input type="text" name="search" id="userInput" placeholder="Type To Search" autocomplete="off" value="user">
+            
+                </div>
+
+                <button onclick="myFunction()" id="viewbtn">View
+                </button>
+            
+            </div>
+
+        </div>
+        <div class="searchitem">
+            
         </div>
         <!-- <%- include('partials/footer.ejs') %> -->
         <script>
@@ -97,6 +155,22 @@
                 let totalRecordRaw = await fetch("/record",{method:"POST"})
                 let totalRecord = await totalRecordRaw.json()
                 document.getElementById("recordCount").innerHTML = totalRecord.length
+
+                document.getElementById("viewbtn").addEventListener("click",myFunction)
+                function myFunction(){
+                    let searchview = document.getElementById("userInput").value;
+                    
+                    if(searchview.toLowerCase() == "officers"){
+                        totalOfficer.forEach(element => {
+                            for (const key in element) {
+                                document.getElementById("searchitem").innerText += element[key]
+                            }
+                            // console.log(element)
+                        });
+                        
+                    }
+                }
+                
             }
             main()
         </script>
