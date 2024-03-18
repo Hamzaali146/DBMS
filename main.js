@@ -18,6 +18,7 @@ let connection = mysql.createPool({
   
 });
 let obj = []
+let cases =[]
 connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
@@ -26,6 +27,15 @@ connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
     obj = results
     console.log('Query results:', obj);
   });
+
+// connection.query('SELECT * FROM CASE_TYPE', (error, results, fields) => {
+//   if (error) {
+//     console.error('Error connecting to MySQL:', error);
+//     return;
+//   }
+//   cases = results
+//   console.log('Query results:', cases);
+// });
 
 
 app.get('/', (req, res) => {
