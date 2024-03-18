@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
-    <title>test</title>
+    <title>Admin</title>
     <style>
         body {
             color: antiquewhite;
@@ -52,7 +52,7 @@
         <div class="hero">
             <div class="card">
                 <p>Total On DutyOfficers</p>
-                <h1 class="officerCount">
+                <h1 id="officerCount">
                     505
                 </h1>
 
@@ -60,7 +60,7 @@
 
             <div class="card">
                 <p>Total Departments</p>
-                <h1 class="departCount">
+                <h1 id="departCount">
                     53
                 </h1>
 
@@ -68,7 +68,7 @@
 
             <div class="card">
                 <p>Total Criminal Records</p>
-                <h1 class="recordCount">
+                <h1 id="recordCount">
                     2344
                 </h1>
 
@@ -83,7 +83,23 @@
             </div>
         </div>
         <!-- <%- include('partials/footer.ejs') %> -->
-        
+        <script>
+            async function main(){
+                let totalCaseRaw = await fetch("/case",{method:"POST"})
+                let totalCase = await totalCaseRaw.json()
+                document.getElementById("casesCount").innerHTML = totalCase.length 
+                let totalOfficerRaw = await fetch("/officer",{method:"POST"})
+                let totalOfficer = await totalOfficerRaw.json()
+                document.getElementById("officerCount").innerHTML = totalOfficer.length
+                let totalDepartmentRaw = await fetch("/department",{method:"POST"})
+                let totalDepartment = await totalDepartmentRaw.json()
+                document.getElementById("departCount").innerHTML = totalDepartment.length
+                let totalRecordRaw = await fetch("/record",{method:"POST"})
+                let totalRecord = await totalRecordRaw.json()
+                document.getElementById("recordCount").innerHTML = totalRecord.length
+            }
+            main()
+        </script>
 </body>
 
 </html>

@@ -19,24 +19,43 @@ let connection = mysql.createPool({
 });
 let obj = []
 let cases =[]
+let depart = []
+let record = []
 connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
     }
     obj = results
-    console.log('Query results:', obj);
+    // console.log('Query results:', obj);
   });
 
-// connection.query('SELECT * FROM CASE_TYPE', (error, results, fields) => {
-//   if (error) {
-//     console.error('Error connecting to MySQL:', error);
-//     return;
-//   }
-//   cases = results
-//   console.log('Query results:', cases);
-// });
+connection.query('SELECT * FROM CASE_TYPE', (error, results, fields) => {
+  if (error) {
+    console.error('Error connecting to MySQL:', error);
+    return;
+  }
+  cases = results
+  // console.log('Query results:', cases);
+});
 
+connection.query('SELECT * FROM POLICE_DEPARTMENT', (error, results, fields) => {
+  if (error) {
+    console.error('Error connecting to MySQL:', error);
+    return;
+  }
+  depart = results
+  console.log('Query results:', depart);
+});
+
+connection.query('SELECT * FROM CRIMINAL_RECORDS', (error, results, fields) => {
+  if (error) {
+    console.error('Error connecting to MySQL:', error);
+    return;
+  }
+  record = results
+  console.log('Query results:', record);
+});
 
 app.get('/', (req, res) => {
     let projectName = "Police Information System"
@@ -75,6 +94,23 @@ app.post('/submit', (req, res) => {
     
   }
   res.render("login")
+})
+
+app.post('/officer', (req, res) => {
+  res.json(obj)
+})
+
+app.post('/department', (req, res) => {
+  res.json(depart)
+})
+
+app.post('/record', (req, res) => {
+  res.json(depart)
+})
+
+
+app.post('/case', (req, res) => {
+    res.json(cases)
 })
 
 app.listen(port, () => {
