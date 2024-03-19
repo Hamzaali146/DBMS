@@ -65,6 +65,22 @@
         input{
             color: white    ;
         }
+        #searchitem{
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .ofcards{
+            text-align: center;
+            padding: 20px;
+            width: 25vw;
+            color: red;
+            background-color: rgba(128, 128, 128, 0.103);
+            border-radius: 20px;
+        }
+        strong{
+            color: white;
+        }
     </style>
 
 </head>
@@ -137,8 +153,10 @@
             </div>
 
         </div>
-        <div class="searchitem">
-            
+        <div>
+            <li id="searchitem">
+
+            </li>
         </div>
         <!-- <%- include('partials/footer.ejs') %> -->
         <script>
@@ -157,22 +175,24 @@
                 document.getElementById("recordCount").innerHTML = totalRecord.length
 
                 document.getElementById("viewbtn").addEventListener("click",myFunction)
-                function myFunction(){
+                
+                async function myFunction(){
+                 await main()
                     let searchview = document.getElementById("userInput").value;
                     
                     if(searchview.toLowerCase() == "officers"){
                         totalOfficer.forEach(element => {
-                            for (const key in element) {
-                                document.getElementById("searchitem").innerText += element[key]
-                            }
-                            // console.log(element)
+                            document.getElementById("searchitem").innerHTML += `<ol class="ofcards">Name Of Officers : <strong>${element.FIRST_NAME}</stong><br>Last Name : <strong>${element.LAST_NAME}</strong><br>Badge Number : <strong>${element.BADGE_NUM}</strong><br>Contact Number : <strong>${element.CONTACT_NUM}</strong><br>Dept Id : <strong>${element.DEPT_ID}</strong><br>Email Id : <strong>${element.EMAIL_ID}</strong><br>Officer Rank : <strong>${element.OFFICER_RANK}</strong><br>Hiring Date : <strong>${element.HIRING_DATE}</strong></ol>`
+                            // console.log(element.FIRST_NAME)
                         });
                         
                     }
                 }
-                
+
             }
             main()
+            
+                
         </script>
 </body>
 
