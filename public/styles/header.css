@@ -5,17 +5,19 @@ body{
   .header{
     display: flex;
     justify-content: center;
-   padding: 20px; 
+   padding: 12px; 
    align-items: center;
    font-size: 18px;
    /* gap: 10px; */
    /* width: 100%; */
    background-color: rgba(128, 128, 128, 0.103);
    border-radius: 20px;
-   box-shadow: -3px 4px 8px #00c4ffe0;
+   box-shadow: -3px 4px 8px rgba(128, 128, 128, 0.24);
   }
   .menu{
-    width: 50vw;
+    display: flex;
+    width: 60vw;
+    justify-content: space-around;
   }
   .menu ul{
     display: flex;
@@ -23,6 +25,7 @@ body{
     gap: 100px;
     align-items: center;
     justify-content:left;
+    padding: 0;
     
     /* justify-content: space-between; */
   }
@@ -33,22 +36,24 @@ body{
   }
   .menu ul li a:hover{
     /* color: #1F51FF; */
-    color: #00c4ffe0;
+    /* color: #00c4ffe0; */
     transition: all 500ms;
     font-size: 19px;
+    text-shadow: 2px -4px 12px red;
   }
   .logo{
     font-size: 18px;
     transition: all 500ms;
-    width: 30vw;
+    width: 20vw;
     text-align: center;
   }
   .logo:hover{
     /* color: #1F51FF; */
-    color: #00c4ffe0;
+    /* color: #00c4ffe0; */
     transition: all 500ms;
     font-size: 20px;
     cursor: pointer;
+    text-shadow: 2px -4px 12px red;
   }
   .btndiv{
     width: 20vw;

@@ -94,21 +94,52 @@
             text-align: right;
             padding-top: 10px;
             padding-right: 100px;
+            width: 40vw;
         }
         span{
             color: red;
         }
         #panelName{
-            margin-top: 0;
+            margin: 0px 0px;
+            width: 50vw;
+            text-align: left;
+            padding-left: 80px;
+            color: red;
+            animation-name: colorchange;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in;
         }
+        @keyframes colorchange{
+            0%{color: red;}
+            25%{color: red;}
+            50%{color: red;}
+            75%{color: blue;}
+        }
+        .txt{
+            padding: 22px;
+        }
+        .mainHeadTxt{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        
     </style>
 
 </head>
 
 <body>
     <%- include('partials/header.ejs') %>
-        <p id="welcomeTag">Welcome Back <span><%= name.charAt(0).toUpperCase() + name.slice(1) %></span>!</p>
+        <div class="mainHeadTxt">
         <h1 id="panelName">Admin Panel</h1>
+        <p id="welcomeTag">Welcome Back <span><%= name.charAt(0).toUpperCase() + name.slice(1) %></span>! <br>
+        <%= rank.charAt(0).toUpperCase() + rank.slice(1) %></p>
+        
+        </div>
         <div class="hero">
             <div class="card">
                 <p>Total On DutyOfficers</p>

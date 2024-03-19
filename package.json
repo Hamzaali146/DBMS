@@ -1,14 +1,14 @@
 {
   "name": "dbms-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is Police Information System Help to track People",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Hamza Ali Khan",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",

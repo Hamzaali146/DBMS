@@ -90,7 +90,7 @@ app.post('/submit', (req, res) => {
   for (const key in obj) {
     const element = obj[key];
     if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.DEPT_ID === parseInt(answer)){
-      res.render("admin",{name:element.FIRST_NAME.toLowerCase()})
+      res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_RANK.toLowerCase()})
     }
     
   }
