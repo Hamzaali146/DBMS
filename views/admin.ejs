@@ -72,10 +72,10 @@
             justify-content: space-around;
         }
         .ofcards{
-            text-align: center;
+            text-align:center;
             padding: 20px;
             width: 25vw;
-            color: red;
+            color: #00c4ffe0;
             background-color: rgba(128, 128, 128, 0.103);
             border-radius: 20px;
         }
@@ -144,7 +144,7 @@
                 </h1> 
 
                 <div class="answer-container" >
-                  <input type="text" name="search" id="userInput" placeholder="Type To Search" autocomplete="off" value="user">
+                  <input type="text" name="search" id="userInput" placeholder="Type To Search" autocomplete="off" >
             
                 </div>
 
@@ -224,6 +224,27 @@
                                         Date Opened : <strong>${element.DATE_OPENED}</strong>
                                         </ol>`
                             
+                        });
+                        
+                    
+                        
+
+                    }else if(searchview.toLowerCase() === "records"){
+                        document.getElementById("searchitem").innerHTML = ""
+                        totalRecord.forEach(element => {
+                            document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
+                                Suspect Name : <strong>${element.SUSPECT_NAME}</strong><br>
+                                Record ID : <strong>${element.RECORD_ID}</strong><br>
+                                Criminal Type : <strong>${element.CRIMINAL_TYPE}</strong><br>
+                                Description : <strong>${element.CRIMINAL_DESCRIPTION}</strong><br>
+                                Status : <strong>${element.CRIMINAL_STATUS}</strong><br>
+                                Date Commited : <strong>${element.DATE_COMMITED}</strong><br>
+                                Investigating Officer Id : <strong>${element.INVESTIGATING_OFFICER_ID}</strong><br>
+                                Area Code : <strong>${element.AREA_CODE}</strong><br>
+                                        </ol>`
+
+
+
                         });
                     
                         
