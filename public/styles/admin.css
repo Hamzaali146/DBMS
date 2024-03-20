@@ -1,0 +1,119 @@
+body {
+    color: antiquewhite;
+
+}
+
+h1:hover {
+    color: red;
+    transition: all 500ms;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+    /* height: 40vh; */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(128, 128, 128, 0.26);
+    width: 15vw;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.card h1 {
+    margin: 0;
+}
+
+h4 {
+    text-align: center;
+}
+li ol{
+    margin: 2px;
+    padding: 0;
+}
+.container{
+    background-color: rgba(128, 128, 128, 0.103);
+    box-shadow: 2px -4px 12px red;
+}
+input{
+    background-color: transparent;
+}
+.sitetitle{
+    color: white    ;
+}
+.heroBody{
+    text-align: center;
+}
+button{
+    margin-top: 20px;
+}
+input{
+    color: white    ;
+}
+#searchitem{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.ofcards{
+    text-align:center;
+    padding: 20px;
+    width: 25vw;
+    color: #00c4ffe0;
+    background-color: rgba(128, 128, 128, 0.103);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 500ms;
+}
+.ofcards:hover{
+    background-color: rgba(128, 128, 128, 0.24);
+    box-shadow: 2px -4px 12px red;
+    transition: all 500ms;
+}
+strong{
+    color: white;
+}
+#welcomeTag{
+    text-align: right;
+    padding-top: 10px;
+    padding-right: 100px;
+    width: 40vw;
+}
+span{
+    color: red;
+}
+#panelName{
+    margin: 0px 0px;
+    width: 50vw;
+    text-align: left;
+    padding-left: 80px;
+    color: red;
+    animation-name: colorchange;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+@keyframes colorchange{
+    0%{color: red;}
+    25%{color: red;}
+    50%{color: red;}
+    75%{color: blue;}
+}
+.txt{
+    padding: 22px;
+}
+.mainHeadTxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
