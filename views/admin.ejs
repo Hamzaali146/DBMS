@@ -87,9 +87,21 @@
             <li id="searchitem">
 
             </li>
+            <button class="printBtn" onclick="printing()">PRINT</button>
         </div>
         <%- include('partials/footer.ejs') %>
         <script src="backend.js"></script>
+        <script>
+            function printing(){
+                let ppp = document.getElementById("searchitem").innerHTML
+                var myWindow = window.open('','','left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0')
+                myWindow.document.write(ppp)
+                myWindow.print();
+                myWindow.document.close();
+                myWindow.focus();
+                myWindow.print();
+}
+        </script>
 </body>
 
 </html>

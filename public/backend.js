@@ -11,8 +11,9 @@ async function main(){
     let totalRecordRaw = await fetch("/record",{method:"POST"})
     let totalRecord = await totalRecordRaw.json()
     document.getElementById("recordCount").innerHTML = totalRecord.length
-
     document.getElementById("viewbtn").addEventListener("click",myFunction)
+    
+    
     
     async function myFunction(){
      await main()
@@ -96,6 +97,9 @@ async function main(){
         
     }
     
+    
+    
 
 }
+
 main()
