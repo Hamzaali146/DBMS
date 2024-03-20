@@ -73,7 +73,7 @@ async function main(){
                 document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
                     Suspect Name : <strong>${element.SUSPECT_NAME}</strong><br>
                     Record ID : <strong>${element.RECORD_ID}</strong><br>
-                    Criminal Type : <strong>${element.CRIMINAL_TYPE}</strong><br>
+                    Criminal Type : <strong>${element.CRIME_TYPE}</strong><br>
                     Description : <strong>${element.CRIMINAL_DESCRIPTION}</strong><br>
                     Status : <strong>${element.CRIMINAL_STATUS}</strong><br>
                     Date Commited : <strong>${element.DATE_COMMITED}</strong><br>
