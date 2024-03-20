@@ -84,6 +84,11 @@ app.get('/test', (req, res) => {
   res.render("test")
 })
 
+app.get('/details', (req, res) => {
+  let projectName = "Police Information System"
+  res.render("test")
+})
+
 app.post('/submit', (req, res) => {
   let answer = req.body.answer;
   let usName =req.body.usName;

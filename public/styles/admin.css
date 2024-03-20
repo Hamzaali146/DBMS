@@ -73,6 +73,9 @@ input{
     cursor: pointer;
     transition: all 500ms;
 }
+.ofcardsLink{
+    text-decoration: none;
+}
 .ofcards:hover{
     background-color: rgba(128, 128, 128, 0.24);
     box-shadow: 2px -4px 12px red;
