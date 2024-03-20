@@ -83,9 +83,13 @@ async function main(){
 
 
             });
+            
         
             
 
+        }else{
+            document.getElementById("searchitem").innerHTML = ""
+            document.getElementById("searchitem").innerHTML = `<p style="color: red;">No Records found named ${searchview.toLowerCase()}!</p>`
         }
 
 

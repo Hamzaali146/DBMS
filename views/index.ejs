@@ -6,47 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CopCompanion</title>
   <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/index.css">
   <style>
-    .upperhead {
-      text-align: center;
-      font-size: 16px;
-    }
-
-    h1 {
-      font-size: 32px;
-      /* color: #1F51FF	; */
-      color: #00c4ffe0;
-    }
-    p{
-      text-align: center;
-      font-size: 16px;
-    }
-    .txt{
-      padding: 0px 100px;
-      height: 40vh;
-    }
-    h4{
-      text-align: center;
-    }
+     .police {
+    background: url(images/car.png) top center no-repeat;
+    background-size: 100% 100%;
+    height: 400px;
+    width: 400px;
+    padding-left: 120px;
+    padding-top: 7.5px;
+  }
   </style>
 </head>
 
 <body id="app">
   <%- include('partials/header.ejs') %>
     <div class="upperhead">
-      <h1>Welcome to Police Information <br>System</h1>
-      <h3>We would love to help our people</h3>
+      <div class="leftMain">
+        <div class="txt">
+          <p>
+            Welcome to the <strong>CopCompanion</strong> Police Information system , your one-stop solution for efficient
+            law enforcement operationsand streamlined information management. At PIMS, we are dedicated to enhancing public
+            safety and promoting community well-being through cutting-edge technology and comprehensive data management.
+          </p>
+        </div>
+      </div>
+      <div class="rightMain">
+        <div class="police">
+          <div class="tab">
+            <div class="cap-3"></div>
+            <div class="cap-2"></div>
+            <div class="cap-1"></div>
+          </div>
+        </div>
+      </div>
+      <!-- <h1>Welcome to Police Information <br>System</h1> -->
+      <!-- <h3>We would love to help our people</h3> -->
     </div>
-    <div class="txt">
-    <p>
-      Welcome to the <strong>CopCompanion</strong> Police Information system , your one-stop solution for efficient law enforcement operationsand streamlined information management. At PIMS, we are dedicated to enhancing public safety and promoting community well-being through cutting-edge technology and comprehensive data management.
-    </p>
-  </div>
-  <%- include('partials/footer.ejs') %>
-    <script>
+    
+    <%- include('partials/footer.ejs') %>
+      <script>
 
 
-    </script>
+      </script>
 </body>
 
 </html>

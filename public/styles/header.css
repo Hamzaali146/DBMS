@@ -13,6 +13,7 @@ body{
    background-color: rgba(128, 128, 128, 0.103);
    border-radius: 20px;
    box-shadow: -3px 4px 8px rgba(128, 128, 128, 0.24);
+   
   }
   .menu{
     display: flex;
@@ -42,10 +43,12 @@ body{
     text-shadow: 2px -4px 12px red;
   }
   .logo{
+    /* opacity: 0%; */
     font-size: 18px;
     transition: all 500ms;
     width: 20vw;
     text-align: center;
+    /* animation: rise 2s ease-in 1s 1 forwards alternate; */
   }
   .logo:hover{
     /* color: #1F51FF; */
@@ -65,4 +68,9 @@ body{
   }
   .footer{
     margin-top: 30px;
+  }
+
+  @keyframes rise{
+    from{opacity: 0%;}
+    to{opacity: 100%;}
   }
