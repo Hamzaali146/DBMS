@@ -21,7 +21,7 @@ async function main(){
         if(searchview.toLowerCase() === "officers"){
             document.getElementById("searchitem").innerHTML =""
             totalOfficer.forEach(element => {
-                document.getElementById("searchitem").innerHTML += `<a href="/details" class="ofcardsLink"><ol class="ofcards">
+                document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
                     Name Of Officers : <strong>${element.FIRST_NAME}</strong><br>
                     Last Name : <strong>${element.LAST_NAME}</strong><br>
                     Badge Number : <strong>${element.BADGE_NUM}</strong><br>
@@ -30,7 +30,7 @@ async function main(){
                     Email Id : <strong>${element.EMAIL_ID}</strong><br>
                     Officer Rank : <strong>${element.OFFICER_RANK}</strong><br>
                     Hiring Date : <strong>${element.HIRING_DATE}</strong>
-                            </ol></a>`
+                            </ol>`
 
 
             });
