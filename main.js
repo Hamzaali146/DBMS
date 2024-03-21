@@ -115,6 +115,31 @@ app.post('/submit', (req, res) => {
   res.render("login")
 })
 
+app.post('/officerdata', (req, res) => {
+  let officerId = req.body.officerId;
+  let deptId = req.body.deptId;
+  let badgeNum = req.body.badgeNum;
+  let firstNum = req.body.firstNum;
+  let lastNum =req.body.lastNum;
+  let ContactNum = req.body.ContactNum;
+  let email = req.body.email;
+  let dob = req.body.dob;
+  let hiringDate = req.body.hiringDate;
+  let officerRank = req.body.officerRank;
+  let sql = `INSERT INTO OFFICERS (OFFICER_ID, DEPT_ID, BADGE_NUM, FIRST_NAME, LAST_NAME, OFFICER_RANK, CONTACT_NUM, EMAIL_ID, DOB, HIRING_DATE) 
+           VALUES (${parseInt(officerId)}, ${parseInt(deptId)}, '${badgeNum}', '${firstNum}', '${lastNum}', '${officerRank}', ${parseInt(ContactNum)}, '${email}', '${dob}', '${hiringDate}')`;
+
+    connection.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // obj = results
+    console.log("Row Inserted Successfully");
+  });
+  res.render("hiring.ejs")
+})
+
 // API FOR ALL MY TABLES FROM MYSQL DATABASE
 
 app.post('/officer', (req, res) => {
