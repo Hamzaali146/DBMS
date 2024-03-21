@@ -21,12 +21,22 @@ let obj = []
 let cases =[]
 let depart = []
 let record = []
+let hr = []
 connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
     }
     obj = results
+    // console.log('Query results:', obj);
+  });
+
+  connection.query('SELECT * FROM HIRING_OFFICERS', (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    hr = results
     // console.log('Query results:', obj);
   });
 
@@ -92,6 +102,13 @@ app.post('/submit', (req, res) => {
     const element = obj[key];
     if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.DEPT_ID === parseInt(answer)){
       res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_RANK.toLowerCase()})
+    } else{
+      for (const key in hr){
+        const element = hr[key]
+        if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.HR_ID === parseInt(answer)){
+          res.render("hiring",{name:element.FIRST_NAME.toLowerCase(),rank:element.HR_ID})
+        }
+      }
     }
     
   }
