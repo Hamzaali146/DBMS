@@ -16,37 +16,58 @@
     padding-left: 120px;
     padding-top: 7.5px;
   }
+  #slider{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    
+  }
+  .w3-content{
+    padding-right: 50px;
+  }
   </style>
 </head>
 
 <body id="app">
   <%- include('partials/header.ejs') %>
-    <div class="upperhead">
-      <div class="leftMain">
-        <div class="txt">
-          <p>
-            Welcome to the <strong>CopCompanion</strong> Police Information system , your one-stop solution for efficient
-            law enforcement operationsand streamlined information management. At PIMS, we are dedicated to enhancing public
-            safety and promoting community well-being through cutting-edge technology and comprehensive data management.
-          </p>
-        </div>
-      </div>
+  <div id="slider">
       <div class="rightMain">
-        <div class="police">
-          <div class="tab">
-            <div class="cap-3"></div>
-            <div class="cap-2"></div>
-            <div class="cap-1"></div>
+                <div class="txt">
+                  <p>
+                    Welcome to the <strong>CopCompanion</strong> Police Information system , your one-stop solution for efficient
+                    law enforcement operationsand streamlined information management. At PIMS, we are dedicated to enhancing public
+                    safety and promoting community well-being through cutting-edge technology and comprehensive data management.
+                  </p>
+                </div>
+                
+            </div>
+            <div class="leftMain">
+                <div class="w3-content w3-section" style="max-width:700px">
+                    <img class="mySlides" src="images/1.png" style="width: 100%;">
+                    <img class="mySlides" src="images/2.png" style="width: 100%;">
+                    <img class="mySlides" src="images/3.png" style="width: 100%;">
+                    <img class="mySlides" src="images/4.png" style="width: 100%;">
+                    <img class="mySlides" src="images/5.png" style="width: 100%;">
+                  </div>
+            </div>
+            
           </div>
-        </div>
-      </div>
-      <!-- <h1>Welcome to Police Information <br>System</h1> -->
-      <!-- <h3>We would love to help our people</h3> -->
-    </div>
-    
-    <%- include('partials/footer.ejs') %>
       <script>
+        var slideIndex = 0;
+carousel();
 
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
 
       </script>
 </body>
