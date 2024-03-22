@@ -140,6 +140,68 @@ app.post('/officerdata', (req, res) => {
   res.render("hiring.ejs")
 })
 
+app.post('/departmentdata', (req, res) => {
+  let postalCode = req.body.postalCode;
+  let deptName = req.body.deptName;
+  let Location = req.body.Location;
+  let landLine = req.body.landLine;
+  let sql = `INSERT INTO POLICE_DEPARTMENT (POSTAL_CODE, DEPT_NAME, LOCATION, LAND_LINE_NUM) 
+           VALUES ('${parseInt(postalCode)}', '${deptName}', '${Location}', '${parseInt(landLine)}')`;
+
+    connection.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // obj = results
+    console.log("Department Inserted Successfully");
+  });
+  res.render("hiring.ejs")
+})
+
+
+app.post('/casesdata', (req, res) => {
+  let caseId = req.body.caseId;
+  let investigating_officer_id = req.body.investigating_officer_id;
+  let description = req.body.description;
+  let dateOpened = req.body.dateOpened;
+  let sql = `INSERT INTO CASE_TYPE (CASE_ID, INVESTIGATING_OFFICER_ID, CASE_DESCRIPTION, DATE_OPENED) 
+           VALUES ('${parseInt(caseId)}', '${parseInt(investigating_officer_id)}', '${description}', '${dateOpened}')`;
+
+    connection.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // obj = results
+    console.log("Case Inserted Successfully");
+  });
+  res.render("hiring.ejs")
+})
+
+app.post('/recordsdata', (req, res) => {
+  let recordId = req.body.recordId;
+  let areaCode = req.body.areaCode;
+  let suspect = req.body.suspect;
+  let crimeType = req.body.crimeType;
+  let crimeStatus =req.body.crimeStatus;
+  let description =req.body.description;
+  let investigating_officer_id =req.body.investigating_officer_id;
+  let datecommit = req.body.datecommit;
+  let sql = `INSERT INTO CRIMINAL_RECORDS (RECORD_ID, AREA_CODE, SUSPECT_NAME, CRIME_TYPE, CRIMINAL_STATUS, CRIMINAL_DESCRIPTION, INVESTIGATING_OFFICER_ID, DATE_COMMITED) 
+           VALUES ('${parseInt(recordId)}', '${parseInt(areaCode)}', '${suspect}', '${crimeType}', '${crimeStatus}', '${description}', '${parseInt(investigating_officer_id)}', '${datecommit}')`;
+
+    connection.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // obj = results
+    console.log("Record Inserted Successfully");
+  });
+  res.render("hiring.ejs")
+})
+
 // API FOR ALL MY TABLES FROM MYSQL DATABASE
 
 app.post('/officer', (req, res) => {

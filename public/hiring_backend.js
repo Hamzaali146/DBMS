@@ -90,6 +90,76 @@ function addDepartment(){
 
 </form>`
 }
+function addCases(){
+  document.getElementById("formWindow").innerHTML = ""
+  document.getElementById("formWindow").innerHTML = `<form class="container" action="/casesdata" method="post">
+  <div class="horizontal-container">
+    <h3 class="sitetitle">
+      Add Cases in CopCompanion Database!
+    </h3>
+    
+  </div>
+  </h1> 
+
+  <div class="answer-container" >
+    <input type="text" name="caseId" id="officerId" placeholder="caseId" autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="investigating_officer_id" id="deptId" placeholder="Investigating officer ID" autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="description" id="badgeNum" placeholder="Case Description" autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="date" name="dateOpened" id="firstNum" placeholder="Date opened"autocomplete="off" >
+  </div>
+  <button type="submit">Add To Database
+      </button>
+
+</form>`
+}
+
+function addRecords(){
+  document.getElementById("formWindow").innerHTML = ""
+  document.getElementById("formWindow").innerHTML = `<form class="container" action="/recordsdata" method="post">
+  <div class="horizontal-container">
+    <h3 class="sitetitle">
+      Add Criminal Records in CopCompanion Database!
+    </h3>
+    
+  </div>
+  </h1> 
+
+  <div class="answer-container" >
+    <input type="text" name="recordId" id="officerId" placeholder="recordId" autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="areaCode" id="deptId" placeholder="Area Code" autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="suspect" id="badgeNum" placeholder="Suspect Name" autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="crimeType" id="firstNum" placeholder="Crime Type"autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="crimeStatus" id="firstNum" placeholder="Crime Status"autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="description" id="firstNum" placeholder="Criminal Description"autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="text" name="investigating_officer_id" id="firstNum" placeholder="Investigating officer Id"autocomplete="off" >
+  </div>
+  <div class="answer-container" >
+    <input type="date" name="datecommit" id="firstNum" placeholder="Date Commited"autocomplete="off" >
+  </div>
+  <button type="submit">Add To Database
+      </button>
+
+</form>`
+}
+
 // function myFunction(){
 //     let officerIdValue = document.getElementById("officerId").value;
 //     let deptIdValue = document.getElementById("deptId").value;
