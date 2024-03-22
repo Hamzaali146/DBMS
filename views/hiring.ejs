@@ -90,8 +90,10 @@
     <%- include('partials/header.ejs') %>
         <div class="mainHeadTxt">
         <h1 id="panelName">Hiring Panel</h1>
-        <p id="welcomeTag">Welcome Back <span><%= name.charAt(0).toUpperCase() + name.slice(1) %></span>! <br>
-        HR ID: <%= rank %></p>
+        <% if (locals.name && locals.rank) { %>
+            <p id="welcomeTag">Welcome Back <span><%= name.charAt(0).toUpperCase() + name.slice(1) %></span>! <br>
+            HR ID: <%= rank %></p>
+        <%} %>
         
         </div>
         

@@ -64,7 +64,7 @@ connection.query('SELECT * FROM CRIMINAL_RECORDS', (error, results, fields) => {
     return;
   }
   record = results
-  console.log('Query results:', record);
+  // console.log('Query results:', record);
   console.log(record.length)
 });
 
