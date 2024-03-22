@@ -44,6 +44,21 @@
             border-radius: 10px;
             
         }
+        #panelName{
+    text-align: center;
+    color: red;
+    animation-name: colorchange;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+@keyframes colorchange{
+    0%{color: red;}
+    25%{color: red;}
+    50%{color: red;}
+    75%{color: blue;}
+}
     </style>
 
 </head>
@@ -53,7 +68,7 @@
         <h1>About us</h1>
         <div class="heroSec">
             <div class="heroSecLeft">
-                <h1>Support Us to clean <br>this City</h1>
+                <h1 id="panelName">Support Us to clean <br>this City</h1>
                 <p>Contact us: +412332</p>
             </div>
             <div class="heroSecRight">
