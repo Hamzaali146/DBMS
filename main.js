@@ -79,6 +79,10 @@ app.get('/login', (req, res) => {
     res.render("login")
 })
 
+app.get('/location', (req, res) => {
+  res.render("location")
+})
+
 
 app.get('/about', (req, res) => {
   let projectName = "Police Information System"

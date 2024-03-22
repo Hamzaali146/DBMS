@@ -17,13 +17,13 @@ body{
   }
   .menu{
     display: flex;
-    width: 60vw;
+    width: 65vw;
     justify-content: space-around;
   }
   .menu ul{
     display: flex;
     list-style: none;
-    gap: 100px;
+    gap: 80px;
     align-items: center;
     justify-content:left;
     padding: 0;
@@ -46,7 +46,7 @@ body{
     /* opacity: 0%; */
     font-size: 18px;
     transition: all 500ms;
-    width: 20vw;
+    width: 15vw;
     text-align: center;
     /* animation: rise 2s ease-in 1s 1 forwards alternate; */
   }
