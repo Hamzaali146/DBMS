@@ -16,12 +16,23 @@
     padding-left: 120px;
     padding-top: 7.5px;
   }
+  .containercard{
+    background-color: aqua;
+    display: flex;
+    height: 300px;
+  }
+  .leftContainerCard{
+    width: 50vw;
+  }
+  .rightContainerCard{
+    width: 50vw;
+  }
   </style>
 </head>
 
 <body id="app">
   <%- include('partials/header.ejs') %>
-    <div class="upperhead">
+    <!-- <div class="upperhead">
       <div class="leftMain">
         <div class="txt">
           <p>
@@ -40,8 +51,23 @@
           </div>
         </div>
       </div>
-      <!-- <h1>Welcome to Police Information <br>System</h1> -->
+       <h1>Welcome to Police Information <br>System</h1> -->
       <!-- <h3>We would love to help our people</h3> -->
+    <!-- </div> --> 
+
+    <div class="containercard">
+      <div class="leftContainerCard">
+        <ol>
+          name of department: sdsdsd<br>
+          name of department: sdsdsd<br>
+          name of department: sdsdsd<br>
+          name of department: sdsdsd<br>
+          
+        </ol>
+      </div>
+      <div class="rightContainerCard">
+        <img src="images/6.png" alt="error" width="100%" height="100%">
+      </div>
     </div>
     
     <%- include('partials/footer.ejs') %>
