@@ -10,7 +10,7 @@ function addOfficer(){
     </h1> 
 
     <div class="answer-container" >
-      <input type="text" name="officerId" id="officerId" placeholder="Type Officer ID" autocomplete="off" >
+      <input type="text" name="officerId" id="officerId" placeholder="Type Officer ID" autocomplete="off" required>
     </div>
     <div class="answer-container" >
       <input type="text" name="deptId" id="deptId" placeholder="Dept ID" autocomplete="off" >
