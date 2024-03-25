@@ -1,25 +1,31 @@
 async function main(){
-    let totalCaseRaw = await fetch("/case",{method:"POST"})
-    let totalCase = await totalCaseRaw.json()
+    try {
+    const totalCaseRaw = await fetch("/case",{method:"POST"})
+    if (!totalCase) throw new Error("Error Fetching Cases...")
+    const totalCase = await totalCaseRaw.json()
     document.getElementById("casesCount").innerHTML = totalCase.length 
-    let totalOfficerRaw = await fetch("/officer",{method:"POST"})
-    let totalOfficer = await totalOfficerRaw.json()
+    const totalOfficerRaw = await fetch("/officer",{method:"POST"})
+    const totalOfficer = await totalOfficerRaw.json()
     document.getElementById("officerCount").innerHTML = totalOfficer.length
-    let totalDepartmentRaw = await fetch("/department",{method:"POST"})
-    let totalDepartment = await totalDepartmentRaw.json()
+    const totalDepartmentRaw = await fetch("/department",{method:"POST"})
+    const totalDepartment = await totalDepartmentRaw.json()
     document.getElementById("departCount").innerHTML = totalDepartment.length
-    let totalRecordRaw = await fetch("/record",{method:"POST"})
-    let totalRecord = await totalRecordRaw.json()
+    const totalRecordRaw = await fetch("/record",{method:"POST"})
+    const totalRecord = await totalRecordRaw.json()
     document.getElementById("recordCount").innerHTML = totalRecord.length
     document.getElementById("viewbtn").addEventListener("click",myFunction)
-    
+    } catch (error) {
+        return {
+            message:error?.message || "Something Went Wrong"
+        }
+    }
     
     
     async function myFunction(){
      await main()
         let searchview = document.getElementById("userInput").value;
         
-        if(searchview.toLowerCase() === "officers"){
+        if(searchview.trim().toLowerCase() === "officers"){
             document.getElementById("searchitem").innerHTML =""
             totalOfficer.forEach(element => {
                 document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
