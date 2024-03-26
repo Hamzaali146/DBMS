@@ -17,18 +17,29 @@ let connection = mysql.createPool({
     queueLimit:0
   
 });
-let obj = []
+let officers_info = []
+let officer_dept_info = []
 let cases =[]
 let depart = []
 let record = []
 let hr = []
-connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
+let record_info=[]
+connection.query('SELECT * FROM OFFICERS_INFO', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
     }
-    obj = results
-    // console.log('Query results:', obj);
+    officers_info = results
+    // console.log('Query results:', officers_info);
+  });
+
+  connection.query('SELECT * FROM OFFICER_DEPT_INFO', (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    officer_dept_info = results
+    // console.log('Query results:', officers_info);
   });
 
   connection.query('SELECT * FROM HIRING_OFFICERS', (error, results, fields) => {
@@ -37,10 +48,10 @@ connection.query('SELECT * FROM OFFICERS', (error, results, fields) => {
       return;
     }
     hr = results
-    // console.log('Query results:', obj);
+    // console.log('Query results:', officers_info);
   });
 
-connection.query('SELECT * FROM CASE_TYPE', (error, results, fields) => {
+connection.query('SELECT * FROM CASE_INFO', (error, results, fields) => {
   if (error) {
     console.error('Error connecting to MySQL:', error);
     return;
@@ -49,7 +60,7 @@ connection.query('SELECT * FROM CASE_TYPE', (error, results, fields) => {
   // console.log('Query results:', cases);
 });
 
-connection.query('SELECT * FROM POLICE_DEPARTMENT', (error, results, fields) => {
+connection.query('SELECT * FROM DEPT_INFO', (error, results, fields) => {
   if (error) {
     console.error('Error connecting to MySQL:', error);
     return;
@@ -58,14 +69,24 @@ connection.query('SELECT * FROM POLICE_DEPARTMENT', (error, results, fields) => 
   // console.log('Query results:', depart);
 });
 
-connection.query('SELECT * FROM CRIMINAL_RECORDS', (error, results, fields) => {
+connection.query('SELECT * FROM CRIME_INFO', (error, results, fields) => {
   if (error) {
     console.error('Error connecting to MySQL:', error);
     return;
   }
   record = results
   // console.log('Query results:', record);
-  console.log(record.length)
+  // console.log(record.length)
+});
+
+connection.query('SELECT * FROM CRIME_DEPT_INFO', (error, results, fields) => {
+  if (error) {
+    console.error('Error connecting to MySQL:', error);
+    return;
+  }
+  record_info = results
+  // console.log('Query results:', record);
+  // console.log(record.length)
 });
 
 app.get('/', (req, res) => {
@@ -102,10 +123,10 @@ app.get('/test', (req, res) => {
 app.post('/submit', (req, res) => {
   let answer = req.body.answer;
   let usName =req.body.usName;
-  for (const key in obj) {
-    const element = obj[key];
-    if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.DEPT_ID === parseInt(answer)){
-      res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_RANK.toLowerCase()})
+  for (const key in officers_info) {
+    const element = officers_info[key];
+    if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.OFFICER_ID === parseInt(answer)){
+      res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_ID})
     } else{
       for (const key in hr){
         const element = hr[key]
@@ -138,7 +159,7 @@ app.post('/officerdata', (req, res) => {
       console.error('Error connecting to MySQL:', error);
       return;
     }
-    // obj = results
+    // officers_info = results
     console.log("Row Inserted Successfully");
   });
   res.render("hiring.ejs")
@@ -157,7 +178,7 @@ app.post('/departmentdata', (req, res) => {
       console.error('Error connecting to MySQL:', error);
       return;
     }
-    // obj = results
+    // officers_info = results
     console.log("Department Inserted Successfully");
   });
   res.render("hiring.ejs")
@@ -177,7 +198,7 @@ app.post('/casesdata', (req, res) => {
       console.error('Error connecting to MySQL:', error);
       return;
     }
-    // obj = results
+    // officers_info = results
     console.log("Case Inserted Successfully");
   });
   res.render("hiring.ejs")
@@ -200,7 +221,7 @@ app.post('/recordsdata', (req, res) => {
       console.error('Error connecting to MySQL:', error);
       return;
     }
-    // obj = results
+    // officers_info = results
     console.log("Record Inserted Successfully");
   });
   res.render("hiring.ejs")
@@ -209,7 +230,11 @@ app.post('/recordsdata', (req, res) => {
 // API FOR ALL MY TABLES FROM MYSQL DATABASE
 
 app.post('/officer', (req, res) => {
-  res.json(obj)
+  res.json(officers_info)
+})
+
+app.post('/officerdept', (req, res) => {
+  res.json(officer_dept_info)
 })
 
 app.post('/department', (req, res) => {
@@ -218,6 +243,10 @@ app.post('/department', (req, res) => {
 
 app.post('/record', (req, res) => {
   res.json(record)
+})
+
+app.post('/recordinfo', (req, res) => {
+  res.json(record_info)
 })
 
 

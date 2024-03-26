@@ -1,7 +1,7 @@
 async function main(){
-    try {
+    // try {
     const totalCaseRaw = await fetch("/case",{method:"POST"})
-    if (!totalCase) throw new Error("Error Fetching Cases...")
+    // if (!totalCase) throw new Error("Error Fetching Cases...")
     const totalCase = await totalCaseRaw.json()
     document.getElementById("casesCount").innerHTML = totalCase.length 
     const totalOfficerRaw = await fetch("/officer",{method:"POST"})
@@ -14,12 +14,15 @@ async function main(){
     const totalRecord = await totalRecordRaw.json()
     document.getElementById("recordCount").innerHTML = totalRecord.length
     document.getElementById("viewbtn").addEventListener("click",myFunction)
-    } catch (error) {
-        return {
-            message:error?.message || "Something Went Wrong"
-        }
-    }
-    
+    // } catch (error) {
+    //     return {
+    //         message:error?.message || "Something Went Wrong"
+    //     }
+    // }
+    const totalOfficerDeptRaw = await fetch("/officerdept",{method:"POST"})
+    const totalOfficerDept = await totalOfficerDeptRaw.json()
+    const totalRecordDeptRaw = await fetch("/recordinfo",{method:"POST"})
+    const totalRecordDept = await totalRecordDeptRaw.json()
     
     async function myFunction(){
      await main()
@@ -28,16 +31,21 @@ async function main(){
         if(searchview.trim().toLowerCase() === "officers"){
             document.getElementById("searchitem").innerHTML =""
             totalOfficer.forEach(element => {
-                document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
+                totalOfficerDept.forEach(e => {
+                    if(e.OFFICER_ID === element.OFFICER_ID){
+                        document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
                     Name Of Officers : <strong>${element.FIRST_NAME}</strong><br>
                     Last Name : <strong>${element.LAST_NAME}</strong><br>
-                    Badge Number : <strong>${element.BADGE_NUM}</strong><br>
+                    Badge Number : <strong>${e.BADGE_NUM}</strong><br>
                     Contact Number : <strong>${element.CONTACT_NUM}</strong><br>
-                    Dept Id : <strong>${element.DEPT_ID}</strong><br>
+                    Dept Id : <strong>${e.DEPT_ID}</strong><br>
                     Email Id : <strong>${element.EMAIL_ID}</strong><br>
-                    Officer Rank : <strong>${element.OFFICER_RANK}</strong><br>
-                    Hiring Date : <strong>${element.HIRING_DATE}</strong>
-                            </ol>`
+                    Officer Rank : <strong>${e.OFFICER_RANK}</strong><br>
+                    Hiring Date : <strong>${e.HIRING_DATE}</strong>
+                            </ol>`        
+                    }
+                });
+                
 
 
             });
@@ -47,9 +55,11 @@ async function main(){
             totalDepartment.forEach(element => {
                 document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
                     Name Of Department : <strong>${element.DEPT_NAME}</strong><br>
+                    Department ID : <strong>${element.DEPT_ID}</strong><br>
                     Land Line no : <strong>${element.LAND_LINE_NUM}</strong><br>
-                    Location : <strong>${element.LOCATION}</strong><br>
-                    Postal Code : <strong>${element.POSTAL_CODE}</strong>
+                    Numbers Of officers : <strong>${element.NUMBER_OF_OFFICERS}</strong><br>
+                    Postal Code : <strong>${element.POSTAL_CODE}</strong><br>
+                    City ID : <strong>${element.CITY_ID}</strong>
                             </ol>`
 
 
@@ -76,16 +86,22 @@ async function main(){
         }else if(searchview.toLowerCase() === "records"){
             document.getElementById("searchitem").innerHTML = ""
             totalRecord.forEach(element => {
-                document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
-                    Suspect Name : <strong>${element.SUSPECT_NAME}</strong><br>
-                    Record ID : <strong>${element.RECORD_ID}</strong><br>
+                totalRecordDept.forEach(e=> {
+                    if(e.CRIME_ID ===element.CRIME_ID){
+                        document.getElementById("searchitem").innerHTML += `<ol class="ofcards">
+                    Suspect Name : <strong>${e.SUSPECT_NAME}</strong><br>
+                    Record ID : <strong>${e.RECORD_ID}</strong><br>
                     Criminal Type : <strong>${element.CRIME_TYPE}</strong><br>
+                    CRIME ID : <strong>${e.CRIME_ID}</strong><br>
                     Description : <strong>${element.CRIMINAL_DESCRIPTION}</strong><br>
-                    Status : <strong>${element.CRIMINAL_STATUS}</strong><br>
-                    Date Commited : <strong>${element.DATE_COMMITED}</strong><br>
-                    Investigating Officer Id : <strong>${element.INVESTIGATING_OFFICER_ID}</strong><br>
-                    Area Code : <strong>${element.AREA_CODE}</strong><br>
+                    Department ID : <strong>${element.DEPT_ID}</strong><br>
+                    Postal Code : <strong>${element.POSTAL_CODE}</strong><br>
+                    Date Incident : <strong>${e.DATE_OF_INCIDENT}</strong><br>
+                    Investigating Officer Id : <strong>${e.INVESTIGATING_OFFICER_ID}</strong><br>
                             </ol>`
+                    }
+                });
+                
 
 
 
