@@ -1,6 +1,9 @@
-function addOfficer(){
+async function addOfficer(){
+  let deptIdCountRaw = await fetch("departments",{method:"POST"})
+  let  deptIdCount = await deptIdCountRaw.json()
     document.getElementById("formWindow").innerHTML = ""
-    document.getElementById("formWindow").innerHTML = `<form class="container" action="/officerdata" method="post">
+    document.getElementById("formWindow").innerHTML = `
+    <form class="container" action="/officerdata" method="post">
     <div class="horizontal-container">
       <h3 class="sitetitle">
         Add officer in CopCompanion Database!
