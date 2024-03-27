@@ -1,9 +1,8 @@
-async function addOfficer(){
-  let deptIdCountRaw = await fetch("departments",{method:"POST"})
-  let  deptIdCount = await deptIdCountRaw.json()
+function addOfficer(){
+  // let deptIdCountRaw = await fetch("departments",{method:"POST"})
+  // let  deptIdCount = await deptIdCountRaw.json()
     document.getElementById("formWindow").innerHTML = ""
-    document.getElementById("formWindow").innerHTML = `
-    <form class="container" action="/officerdata" method="post">
+    document.getElementById("formWindow").innerHTML = `<form class="container" action="/officerdata" method="post">
     <div class="horizontal-container">
       <h3 class="sitetitle">
         Add officer in CopCompanion Database!
@@ -16,7 +15,7 @@ async function addOfficer(){
       <input type="text" name="officerId" id="officerId" placeholder="Type Officer ID" autocomplete="off" required>
     </div>
     <div class="answer-container" >
-      <input type="text" name="deptId" id="deptId" placeholder="Dept ID" autocomplete="off" >
+      <input type="text" name="deptId" id="deptId" placeholder="Dept ID" autocomplete="off"  >
     </div>
     <div class="answer-container" >
       <input type="text" name="badgeNum" id="badgeNum" placeholder="Badge Num"autocomplete="off" >
@@ -40,22 +39,43 @@ async function addOfficer(){
       <input type="date" name="hiringDate" id="hiringDate" placeholder="Hiring date"autocomplete="off" >
     </div>
     <div class="answer-container" >
-        <select name="officerRank" id="officerRank" size="1"> 
+        <select name="officerRank" id="officerRank" size="1" required> 
       <option value="default" selected> 
         --- Choose Officer Rank --- 
       </option> 
-      <option value="Sergeant"> 
-        Sergeant 
+      <option value="Constable"> 
+      Constable 
       </option> 
-      <option value="Lieutenant"> 
-        Lieutenant
+      <option value="Head Constable"> 
+      Head Constable
       </option> 
-      <option value="Captain"> 
-        Captain 
+      <option value="Assistant Sub-Inspector of Police (ASI)"> 
+      Assistant Sub-Inspector of Police (ASI) 
       </option> 
-      <option value="Officer"> 
-        Officer 
-      </option> 
+      <option value="Sub-Inspector of Police (SI)"> 
+      Sub-Inspector of Police (SI) 
+      </option>
+      <option value="Inspector of Police (IP)"> 
+      Inspector of Police (IP)
+      </option>
+      <option value="Assistant/Deputy Superintendent of Police (ASP/DSP)"> 
+      Assistant/Deputy Superintendent of Police (ASP/DSP) 
+      </option>
+      <option value="Superintendent of Police (SP)"> 
+      Superintendent of Police (SP)
+      </option>
+      <option value="Senior Superintendent of Police (SSP)"> 
+      Senior Superintendent of Police (SSP)
+      </option>
+      <option value="Deputy Inspector General of Police (DIG)"> 
+      Deputy Inspector General of Police (DIG)
+      </option>
+      <option value="Additional Inspector General of Police (AIG or Addl. IG)"> 
+      Additional Inspector General of Police (AIG or Addl. IG)
+      </option>
+      <option value="Inspector General of Police (IGP)"> 
+      Inspector General of Police (IGP)
+      </option>
     </select> 
     </div>
 

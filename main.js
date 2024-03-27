@@ -114,6 +114,10 @@ app.get('/complain', (req, res) => {
   res.render("complain")
 })
 
+app.get('/hiring', (req, res) => {
+  res.render("hiring")
+})
+
 app.get('/test', (req, res) => {
   let projectName = "Police Information System"
   res.render("test")
@@ -151,7 +155,18 @@ app.post('/officerdata', (req, res) => {
   let dob = req.body.dob;
   let hiringDate = req.body.hiringDate;
   let officerRank = req.body.officerRank;
-  let sql = `INSERT INTO OFFICERS (OFFICER_ID, DEPT_ID, BADGE_NUM, FIRST_NAME, LAST_NAME, OFFICER_RANK, CONTACT_NUM, EMAIL_ID, DOB, HIRING_DATE) 
+  let idcheck = false;
+  let deptcheck =false;
+  officer_dept_info.forEach(element => {
+    if(element.OFFICER_ID === parseInt(officerId)){
+      idcheck = true
+    }
+    if (element.DEPT_ID === parseInt(deptId)) {
+      deptcheck =true
+    }
+  });
+  if(idcheck && deptcheck){
+    let sql = `INSERT INTO OFFICERS (OFFICER_ID, DEPT_ID, BADGE_NUM, FIRST_NAME, LAST_NAME, OFFICER_RANK, CONTACT_NUM, EMAIL_ID, DOB, HIRING_DATE) 
            VALUES (${parseInt(officerId)}, ${parseInt(deptId)}, '${badgeNum}', '${firstNum}', '${lastNum}', '${officerRank}', ${parseInt(ContactNum)}, '${email}', '${dob}', '${hiringDate}')`;
 
     connection.query(sql, (error, results, fields) => {
@@ -162,7 +177,11 @@ app.post('/officerdata', (req, res) => {
     // officers_info = results
     console.log("Row Inserted Successfully");
   });
-  res.render("hiring.ejs")
+  res.redirect("/hiring")
+  }else{
+    res.render("hiring",{errord:"Officersid or dept id"})
+  }
+  
 })
 
 app.post('/departmentdata', (req, res) => {
