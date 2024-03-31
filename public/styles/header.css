@@ -13,6 +13,8 @@ body{
    background-color: rgba(128, 128, 128, 0.103);
    border-radius: 20px;
    box-shadow: -3px 4px 8px rgba(128, 128, 128, 0.24);
+   position: sticky;
+   top: 0;
    
   }
   .menu{
@@ -71,6 +73,9 @@ body{
   }
   .footer{
     margin-top: 30px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
   }
 
   #coplogo{
@@ -81,4 +86,7 @@ body{
   @keyframes rise{
     from{opacity: 0%;}
     to{opacity: 100%;}
+  }
+  iframe{
+    display:none;
   }
