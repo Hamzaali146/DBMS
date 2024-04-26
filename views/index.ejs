@@ -6,44 +6,177 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CopCompanion</title>
   <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/index.css">
+  <!-- <link rel="stylesheet" href="/styles/index.css"> -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">  
     <link rel="manifest" href="favicon/site.webmanifest">
   <style>
-     .police {
-    background: url(images/car.png) top center no-repeat;
-    background-size: 100% 100%;
-    height: 400px;
-    width: 400px;
-    padding-left: 120px;
-    padding-top: 7.5px;
-  }
-  #slider{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
-    
-  }
-  .w3-content{
-    padding-right: 50px;
-  }
-  img{
-    border-radius: 12px;
-  }
-  audio::-webkit-media-controls-play-button,
-     audio::-webkit-media-controls-panel {
-     background-color: whitesmoke;
-     color: aqua;
-     }
+    .herosection{
+  height: 70vh;
+  background: url("images/contentbg.jpg");
+  background-size: cover;
+  display: flex;
+}
+.secHeroSection{
+  height: 100vh;
+  display: flex;
+  padding: 80px;
+  justify-content: space-around;
+}
+.thirdheroSection{
+  height: 100vh;
+  display: flex;
+  background: url("images/policecon.jpg");
+  background-size: cover;
+  padding: 80px;
+}
+.leftHeroSec{
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 50px;
+  color: white;
+}
+.headp{
+  font-size: 80px;
+  line-height: 80px;
+  font-weight: bolder;
+}
+#headpara{
+  font-size: 20px;
+  padding-top: 18px;
+}
+.btnrequest{
+  margin-top: 50px;
+  padding: 20px 30px;
+  background-color: #D93A37;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  width: 200px;
+}
+.btnrequest:hover{
+  background-color: gray;
+  cursor: pointer;
+}
+.secherofirst{
+  width: 10vw;
+}
+.secherosecond{
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  gap: 12px;
+}
+.secherothird{
+  width: 30vw;
+}
+p{
+  text-align: justify;
+}
+.secherothirdimg{
+  background: url("images/officer.png");
+  background-size: cover;
+  height: 100%;
+}
+.thirdherofirst{
+  display: flex;
+  gap: 10px;
+}
+.police {
+background: url(images/car.png) top center no-repeat;
+background-size: 100% 100%;
+height: 400px;
+width: 400px;
+padding-left: 120px;
+padding-top: 7.5px;
+}
+#slider{
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin-top: 50px;
+
+}
+.w3-content{
+padding-right: 50px;
+}
+img{
+border-radius: 12px;
+}
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel {
+background-color: #D93A37;
+color: rgb(255, 255, 255);
+}
+audio{
+  margin-top: 16px;
+}
   </style>
 </head>
 
 <body id="app">
   <%- include('partials/header.ejs') %>
-  <div id="slider">
+  <div class="main">
+    <div class="herosection">
+        <div class="leftHeroSec">
+            <div class="leftHeroContainer">
+                <p class="headp">New York</p>
+                <p class="headp">Police Department</p>
+                <p id="headpara">We are committed to delivering the highest degree of professional police services in the city</p>
+                <audio controls 
+                    <source src="audio/aron.mp3" type="audio/mpeg">
+            </audio>
+                <!-- <button class="btnrequest">Request a Callback</button> -->
+            </div>
+        </div>
+        <div class="rightHeroSection">
+
+        </div>
+    </div>
+    <div class="secHeroSection">
+        <div class="secherofirst">
+            <hr style="width: 60px; background-color: #D93A37; height: 3px; border: none;">
+        </div>
+        <div class="secherosecond">
+            <p style="font-weight: 600; color: rgba(0, 0, 0, 0.952);">ABOUT</p>
+            <h4 style="font-size: 42px;">We are committed to delivering the highest degree of professional police services in Pakistan </h4>
+            <p style="font-size: 18px; line-height: 28px;">The NYPolice  is one of the largest, most highly regarded law enforcement agencies in the state. In operation since 1948, the New York Police department  is an elite team of divers, boat operators, and bomb squad divers who have participated in the investigations of numerous underwater and land crime scenes, as well as homeland security sweeps.</p>
+            <p class="lowerpara">Our mission is to promote an atmosphere of partnership with the community, working together toward the common goal of protecting life and property. We are determined to enhance the overall quality of life through mutual trust, respect, and the fair and equitable enforcement of the laws while carefully safeguarding the dignity of all. </p>
+            <button class="btnrequest" style="margin-top: 20px;">More Info</button>
+        </div>
+        <div class="secherothird">
+            <div class="secherothirdimg">
+                
+            </div>
+        </div>
+    </div>
+    <div class="thirdheroSection">
+        <div class="thirdherofirst">
+            <div class="thirdherofirst-1">
+                <hr style="width: 60px; background-color: #D93A37; height: 3px; border: none;">
+            </div>
+            <div class="thirdherofirst-2">
+                <p>WHAT WE DO</p>
+                <h3>Preserving the peace of every citizen!</h3>
+                <p>Pakistan Police Services!</p>
+            </div>
+        </div>
+        <div class="thirdherosec">
+            <div class="card"></div>
+            <!-- <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div> -->
+        </div>
+    </div>
+</div>
+  <!-- <div id="slider">
       <div class="rightMain">
                 <div class="txt">
                   <p>
@@ -51,7 +184,7 @@
                     law enforcement operationsand streamlined information management. At PIMS, we are dedicated to enhancing public
                     safety and promoting community well-being through cutting-edge technology and comprehensive data management.
                   </p>
-                  <audio controls 
+                  <audio controls autoplay
                     <source src="audio/aron.mp3" type="audio/mpeg">
                   </audio>
                 </div>
@@ -84,7 +217,7 @@ function carousel() {
   setTimeout(carousel, 3000); // Change image every 2 seconds
 }
 
-      </script>
+      </script> -->
 </body>
 
 </html>

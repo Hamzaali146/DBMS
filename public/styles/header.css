@@ -101,7 +101,7 @@ body {
     width: 20vw;
     text-align: right;
     font-size: 22px;
-    padding-left: 50px;
+    padding-left: 80px;
     gap: 20px;
     /* animation: rise 2s ease-in 1s 1 forwards alternate; */
   }
@@ -143,3 +143,8 @@ body {
   iframe{
     display:none;
   }
+  /* .txtlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
