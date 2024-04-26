@@ -1,55 +1,108 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+    font-family: "PT Sans", sans-serif
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.submenu {
+    display: flex;
+    background-color: rgb(12, 12, 12);
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    color: #E85D2A;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.leftSubMenu {
+    width: 70vw;
+    text-align: right;
+}
+
+.rightSubMenu {
+    width: 25vw;
+}
+
+.submenu a {
     color: white;
-    /* background-color: rgba(128, 128, 128, 0.096); */
-  }
-  .header{
+    text-decoration: none;
+}
+.navbar p{
+    margin: 0;
+}
+.menu{
     display: flex;
+    align-items: center;
     justify-content: center;
-   /* padding: 12px;  */
-   align-items: center;
-   font-size: 18px;
-   /* gap: 10px; */
-   /* width: 100%; */
-   background-color: rgba(128, 128, 128, 0.103);
-   border-radius: 20px;
-   box-shadow: -3px 4px 8px rgba(128, 128, 128, 0.24);
-   position: sticky;
-   top: 0;
-   
-  }
-  .menu{
+    background-color: white;
+    padding: 20px;
+}
+.navbar ul{
     display: flex;
-    width: 65vw;
-    justify-content: space-around;
-  }
+    justify-content:space-around;
+    align-items: center;
+    gap: 60px;
+}
+.navbar ul li{
+    list-style: none;
+    font-size: 18px;
+    font-weight: 550;
+}
+.navbar{
+    width: 60vw;
+}
+.btn{
+    width: 20vw;
+}
+.btncontact{
+    padding: 20px 50px;
+    background-color: transparent;
+    border: 1px saolid black;
+    transition: all 300ms;
+}
+.btncontact:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 300ms;
+}
   .menu ul{
     display: flex;
     list-style: none;
     gap: 80px;
     align-items: center;
-    justify-content:left;
+    justify-content:center;
     padding: 0;
     
     /* justify-content: space-between; */
   }
   .menu ul li a{
     text-decoration: none;
-    color: white;
+    color: black;
     transition: all 500ms;
   }
   .menu ul li a:hover{
     /* color: #1F51FF; */
     /* color: #00c4ffe0; */
     transition: all 500ms;
-    font-size: 19px;
+    /* font-size: 19px; */
     text-shadow: 2px -4px 12px red;
   }
   .logo{
     /* opacity: 0%; */
-    font-size: 18px;
     transition: all 500ms;
-    width: 15vw;
     text-align: center;
+    display: flex;
+    width: 20vw;
+    text-align: right;
+    font-size: 22px;
+    padding-left: 50px;
+    gap: 20px;
     /* animation: rise 2s ease-in 1s 1 forwards alternate; */
   }
   .logo:hover{
