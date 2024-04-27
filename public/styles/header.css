@@ -91,7 +91,8 @@ body {
     /* color: #00c4ffe0; */
     transition: all 500ms;
     /* font-size: 19px; */
-    text-shadow: 2px -4px 12px red;
+    /* text-shadow: 2px -4px 12px red; */
+    color: #E85D2A;
   }
   .logo{
     /* opacity: 0%; */
