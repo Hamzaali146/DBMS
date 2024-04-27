@@ -1,3 +1,7 @@
+@font-face {
+  font-family: nooriurdu;
+  src: url("urdu.ttf");
+}
 .herosection{
   height: 70vh;
   background: url("images/contentbg.jpg");
