@@ -1,5 +1,6 @@
 body {
-    color: antiquewhite;
+    color: black;
+    font-size: 18px;
 
 }
 
@@ -19,12 +20,14 @@ h1:hover {
 .card {
     display: flex;
     flex-direction: column;
-    background-color: rgba(128, 128, 128, 0.26);
-    width: 15vw;
+    background-color:#F7F7F7;
+    color: tomato;
+    width: 20vw;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    padding: 8px;
+    padding: 28px;
+    box-shadow: -4px 8px 20px 0px #0000001A;
 }
 
 .card h1 {
@@ -39,14 +42,14 @@ li ol{
     padding: 0;
 }
 .container{
-    background-color: rgba(128, 128, 128, 0.103);
-    box-shadow: 2px -4px 12px red;
+    background-color:#F7F7F7;
+    box-shadow: -4px 8px 20px 0px #0000001A;
 }
 input{
     background-color: transparent;
 }
 .sitetitle{
-    color: white    ;
+    color: rgba(0, 0, 0, 0.63)    ;
 }
 .heroBody{
     text-align: center;
@@ -55,7 +58,7 @@ button{
     margin-top: 20px;
 }
 input{
-    color: white    ;
+    color: tomato ;
 }
 #searchitem{
     display: flex;
@@ -67,27 +70,28 @@ input{
     text-align:center;
     padding: 20px;
     width: 25vw;
-    color: #00c4ffe0;
-    background-color: rgba(128, 128, 128, 0.103);
+    color: black;
+    background-color: #F7F7F7;
     border-radius: 20px;
     cursor: pointer;
     transition: all 500ms;
+    padding: 30px;
 }
 .ofcardsLink{
     text-decoration: none;
 }
 .ofcards:hover{
-    background-color: rgba(128, 128, 128, 0.24);
-    box-shadow: 2px -4px 12px red;
+    background-color: #F7F7F7;
+    box-shadow: -4px 8px 12px 0px tomato;
     transition: all 500ms;
 }
 strong{
-    color: white;
+    color: tomato;
 }
 #welcomeTag{
     text-align: right;
     padding-top: 10px;
-    padding-right: 100px;
+    padding-right: 20px;
     width: 40vw;
 }
 span{
@@ -97,7 +101,7 @@ span{
     margin: 0px 0px;
     width: 50vw;
     text-align: left;
-    padding-left: 80px;
+    padding-left: 20px;
     color: red;
     animation-name: colorchange;
     animation-duration: 2s;
