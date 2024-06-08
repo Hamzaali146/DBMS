@@ -12,13 +12,16 @@
     <link rel="manifest" href="favicon/site.webmanifest">
     <title>Hr Panel</title>
     <style>
+        body{
+            color: black;
+        }
         .hero{
-            background-color: rgba(128, 128, 128, 0.096);
+            /* background-color: rgba(128, 128, 128, 0.096); */
             width: 90vw;
             padding: 18px 26px 18px 26px;
             text-align: justify;
             margin: 0 auto;
-            border: 2px solid red;
+            border: 2px solid #E85D2A;
             border-radius: 10px;
         }
         .allBtns{
@@ -32,13 +35,14 @@
             font-weight: 600;
             width: 20vw;
             background-color:rgba(128, 128, 128, 0.096);
-            color: red;
+            color: black;
             margin-top: 10px;
+            border-radius: 16px;
             
         }
         .utilitybtn:hover{
             background-color: rgba(128, 128, 128, 0.192);
-            box-shadow: 2px -3px 6px red;
+            box-shadow: 2px -3px 6px #C28C6D;
         }
         .dropbtn {
   background-color: #04AA6D;
@@ -59,9 +63,9 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: black;
+  /* background-color: black; */
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
   z-index: 1;
   transition: all 500ms;
   border-radius: 10px;
@@ -90,6 +94,9 @@
 }
 button{
     margin-top: 0;
+}
+strong{
+    color: #E85D2A;
 }
     </style>
 </head>

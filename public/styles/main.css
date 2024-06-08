@@ -72,7 +72,7 @@ button {
 button:hover {
   /* background-color: #ffd500; */
   /* background-color: rgb(228, 10, 10); */
-  background-color: rgb(207, 30, 30);
+  background-color: #F27933;
   transition: all 500ms;
 }
 
@@ -122,13 +122,13 @@ button:hover {
   transition: background-color 0.3s, color 0.3s;
 }
 .sitetitle{
-  color: gray;
+  color: #E85D2A;
   transition: all 500ms;
   font-size: 26px;
   cursor: pointer;
 }
 .sitetitle:hover{
-  color: red;
+  color: #F27933;
   transition: all 500ms;
   cursor: pointer;
 }

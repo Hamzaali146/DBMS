@@ -27,8 +27,10 @@
 .thirdheroSection{
   height: 100vh;
   display: flex;
-  background: url("images/policecon.jpg");
-  background-size: cover;
+  /* background: url("images/policecon.jpg"); */
+  /* background-size: cover; */
+  justify-content: center;
+  align-items: center;
   padding: 80px;
 }
 .leftHeroSec{
@@ -105,6 +107,9 @@ margin-top: 50px;
 }
 .w3-content{
 padding-right: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 img{
 border-radius: 12px;
@@ -127,8 +132,8 @@ audio{
         <div class="leftHeroSec">
             <div class="leftHeroContainer">
                 <p class="headp">خوش آمدید</p>
-                <p class="headp">Police Department</p>
-                <p id="headpara">We are committed to delivering the highest degree of professional police services in the city</p>
+                <p class="headp">Muhaafiz - <span style="color: #D93A37;">محافظ</span></p>
+                <p id="headpara">We are committed to delivering the highest degree of professional police services in the city<br>ہم شہر میں اعلیٰ ترین پیشہ ورانہ پولیس خدمات فراہم کرنے کے لیے پرعزم ہیں۔</p>
                 <audio controls 
                     <source src="audio/aron.mp3" type="audio/mpeg">
             </audio>
@@ -157,24 +162,19 @@ audio{
         </div>
     </div>
     <div class="thirdheroSection">
-        <div class="thirdherofirst">
-            <div class="thirdherofirst-1">
-                <hr style="width: 60px; background-color: #D93A37; height: 3px; border: none;">
-            </div>
-            <div class="thirdherofirst-2">
-                <p>WHAT WE DO</p>
-                <h3>Preserving the peace of every citizen!</h3>
-                <p>Pakistan Police Services!</p>
-            </div>
-        </div>
-        <div class="thirdherosec">
-            <div class="card"></div>
-            <!-- <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div> -->
-        </div>
+      <div class="leftMain">
+        <div class="w3-content w3-section" style="max-width:1000px">
+            <img class="mySlides" src="images/1.png" style="width: 100%;">
+            <img class="mySlides" src="images/2.png" style="width: 100%;">
+            <img class="mySlides" src="images/3.png" style="width: 100%;">
+            <img class="mySlides" src="images/4.png" style="width: 100%;">
+            <img class="mySlides" src="images/5.png" style="width: 100%;">
+          </div>
+    </div>
+    
+  </div>
+
+            
     </div>
 </div>
   <!-- <div id="slider">
@@ -219,6 +219,23 @@ function carousel() {
 }
 
       </script> -->
+      <script>
+        var slideIndex = 0;
+        carousel();
+        
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {slideIndex = 1}
+        x[slideIndex-1].style.display = "block";
+        setTimeout(carousel, 3000); // Change image every 2 seconds
+        }
+        
+        </script> 
 </body>
 
 </html>
