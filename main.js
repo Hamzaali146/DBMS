@@ -30,7 +30,7 @@ connection.query('SELECT * FROM OFFICERS_INFO', (error, results, fields) => {
       return;
     }
     officers_info = results
-    // console.log('Query results:', officers_info);
+    console.log('Query results:', officers_info);
   });
 
   connection.query('SELECT * FROM OFFICER_DEPT_INFO', (error, results, fields) => {
@@ -129,7 +129,7 @@ app.post('/submit', (req, res) => {
   let usName =req.body.usName;
   for (const key in officers_info) {
     const element = officers_info[key];
-    if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.OFFICER_ID === parseInt(answer)){
+    if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.OFF_PASSWORD.toLowerCase() == answer.toLowerCase()){
       res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_ID})
     } else{
       for (const key in hr){
@@ -155,6 +155,7 @@ app.post('/officerdata', (req, res) => {
   let dob = req.body.dob;
   let hiringDate = req.body.hiringDate;
   let officerRank = req.body.officerRank;
+  let passWord = req.body.passWord
   let idcheck = false;
   let deptcheck =false;
   officer_dept_info.forEach(element => {
@@ -166,16 +167,26 @@ app.post('/officerdata', (req, res) => {
     }
   });
   if(idcheck && deptcheck){
-    let sql = `INSERT INTO OFFICERS (OFFICER_ID, DEPT_ID, BADGE_NUM, FIRST_NAME, LAST_NAME, OFFICER_RANK, CONTACT_NUM, EMAIL_ID, DOB, HIRING_DATE) 
-           VALUES (${parseInt(officerId)}, ${parseInt(deptId)}, '${badgeNum}', '${firstNum}', '${lastNum}', '${officerRank}', ${parseInt(ContactNum)}, '${email}', '${dob}', '${hiringDate}')`;
-
-    connection.query(sql, (error, results, fields) => {
+    let sqlofficerinfo = `INSERT INTO OFFICERS_INFO (FIRST_NAME, LAST_NAME, CONTACT_NUM, EMAIL_ID, OFF_PASSWORD, DOB) 
+           VALUES ('${firstNum}, '${lastNum}', '${parseInt(ContactNum)}', '${email}', '${passWord}', '${dob}')`;
+    let sqlofficerdept = `INSERT INTO OFFICER_DEPT_INFO (OFFICER_ID, DEPT_ID, BADGE_NUM, OFFICER_RANK , HIRING_DATE) 
+           VALUES ('${parseInt(officerId)}', '${parseInt(deptId)}, '${badgeNum}', '${officerRank}', '${hiringDate}')`;
+    
+    connection.query(sqlofficerinfo, (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
     }
     // officers_info = results
-    console.log("Row Inserted Successfully");
+    console.log("Row Inserted Successfully to officers info");
+  });
+  connection.query(sqlofficerdept, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // officers_info = results
+    console.log("Row Inserted Successfully to officer dept");
   });
   res.redirect("/hiring")
   }else{

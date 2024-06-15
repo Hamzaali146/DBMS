@@ -30,6 +30,9 @@ function addOfficer(){
       <input type="text" name="ContactNum" id="ContactNum" placeholder="Contact Number"autocomplete="off" >
     </div>
     <div class="answer-container" >
+      <input type="text" name="passWord" id="passWord" placeholder="Set Password"autocomplete="off" >
+    </div>
+    <div class="answer-container" >
       <input type="email" name="email" id="email" placeholder="Email"autocomplete="off" >
     </div>
     <div class="answer-container" >
