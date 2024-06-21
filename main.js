@@ -1,8 +1,8 @@
-import express from "express";
+import express from "express";  // Server initialize through express
 import bodyParser from "body-parser";
 const app = express()
 const port = 3000
-app.use(express.static('public'))
+app.use(express.static('public')) // ye ek middleware ha middleware basically fn hota ha isse ham public folder access krte hain
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 import mysql from "mysql2";
@@ -17,22 +17,30 @@ let connection = mysql.createPool({
     queueLimit:0
   
 });
-let officers_info = []
-let officer_dept_info = []
+let officers_info = [] // officers_personal info
+let officer_dept_info = [] // officers_personal info
 let cases =[]
 let depart = []
 let record = []
 let hr = []
 let record_info=[]
+let officertabjoin=[]
 connection.query('SELECT * FROM OFFICERS_INFO', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
     }
     officers_info = results
-    console.log('Query results:', officers_info);
+    // console.log('Query results:', officers_info);
   });
-
+  connection.query('select * from OFFICERS_INFO natural join OFFICER_DEPT_INFO;', (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    officertabjoin = results
+    console.log('Query results officer table:', officertabjoin);
+  });
   connection.query('SELECT * FROM OFFICER_DEPT_INFO', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
@@ -66,7 +74,7 @@ connection.query('SELECT * FROM DEPT_INFO', (error, results, fields) => {
     return;
   }
   depart = results
-  // console.log('Query results:', depart);
+  console.log('Query results: of depart', depart);
 });
 
 connection.query('SELECT * FROM CRIME_INFO', (error, results, fields) => {
@@ -127,9 +135,9 @@ app.get('/test', (req, res) => {
 app.post('/submit', (req, res) => {
   let answer = req.body.answer;
   let usName =req.body.usName;
-  for (const key in officers_info) {
-    const element = officers_info[key];
-    if(element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.OFF_PASSWORD.toLowerCase() == answer.toLowerCase()){
+  for (const key in officertabjoin) {
+    const element = officertabjoin[key];
+    if(element.OFFICER_RANK == 'Senior Superintendent of Police (SSP)' && element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.OFF_PASSWORD.toLowerCase() == answer.toLowerCase()){
       res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_ID})
     } else{
       for (const key in hr){
@@ -145,7 +153,7 @@ app.post('/submit', (req, res) => {
 })
 
 app.post('/officerdata', (req, res) => {
-  let officerId = req.body.officerId;
+  // let officerId = req.body.officerId;
   let deptId = req.body.deptId;
   let badgeNum = req.body.badgeNum;
   let firstNum = req.body.firstNum;
@@ -158,42 +166,49 @@ app.post('/officerdata', (req, res) => {
   let passWord = req.body.passWord
   let idcheck = false;
   let deptcheck =false;
-  officer_dept_info.forEach(element => {
-    if(element.OFFICER_ID === parseInt(officerId)){
-      idcheck = true
-    }
+  depart.forEach(element => {  // ye hramkhor ye check kraha k officer
+
     if (element.DEPT_ID === parseInt(deptId)) {
-      deptcheck =true
+      deptcheck = true
     }
   });
-  if(idcheck && deptcheck){
-    let sqlofficerinfo = `INSERT INTO OFFICERS_INFO (FIRST_NAME, LAST_NAME, CONTACT_NUM, EMAIL_ID, OFF_PASSWORD, DOB) 
-           VALUES ('${firstNum}, '${lastNum}', '${parseInt(ContactNum)}', '${email}', '${passWord}', '${dob}')`;
-    let sqlofficerdept = `INSERT INTO OFFICER_DEPT_INFO (OFFICER_ID, DEPT_ID, BADGE_NUM, OFFICER_RANK , HIRING_DATE) 
-           VALUES ('${parseInt(officerId)}', '${parseInt(deptId)}, '${badgeNum}', '${officerRank}', '${hiringDate}')`;
+  if(deptcheck){
+    // let sqlofficerinfo = `INSERT INTO OFFICERS_INFO (FIRST_NAME, LAST_NAME, CONTACT_NUM, EMAIL_ID, OFF_PASSWORD, DOB) 
+    //        VALUES ('${firstNum}, '${lastNum}', '${parseInt(ContactNum)}', '${email}', '${passWord}', '${dob}')`;
+    let sqlOfficerInfo = `INSERT INTO OFFICERS_INFO (FIRST_NAME, LAST_NAME, CONTACT_NUM, EMAIL_ID, OFF_PASSWORD, DOB) 
+           VALUES (?, ?, ?, ?, ?, ?)`;
     
-    connection.query(sqlofficerinfo, (error, results, fields) => {
+    
+    connection.query(sqlOfficerInfo, [firstNum, lastNum, parseInt(ContactNum), email, passWord, dob],(error, results, fields) => {
     if (error) {
-      console.error('Error connecting to MySQL:', error);
-      return;
+      return res.status(500).send(error);
     }
-    // officers_info = results
+    // officers_info = results'
+    let Officersid = results.insertId;
+    // let sqlofficerdept = `INSERT INTO OFFICER_DEPT_INFO (OFFICER_ID, DEPT_ID, BADGE_NUM, OFFICER_RANK , HIRING_DATE) 
+    // VALUES ('${parseInt(Officersid)}', '${parseInt(deptId)}, '${badgeNum}', '${officerRank}', '${hiringDate}')`;
+
+    let sqlOfficerDept = `INSERT INTO OFFICER_DEPT_INFO (OFFICER_ID, DEPT_ID, BADGE_NUM, OFFICER_RANK, HIRING_DATE) 
+                            VALUES (?, ?, ?, ?, ?)`;
+
+    connection.query(sqlOfficerDept,[Officersid, parseInt(deptId), badgeNum, officerRank, hiringDate], (error, results, fields) => {
+      if (error) {
+        console.error('Error connecting to MySQL:', error);
+        return;
+      }
+      // officers_info = results
+      console.log("Row Inserted Successfully to officer dept");
+    });
     console.log("Row Inserted Successfully to officers info");
   });
-  connection.query(sqlofficerdept, (error, results, fields) => {
-    if (error) {
-      console.error('Error connecting to MySQL:', error);
-      return;
-    }
-    // officers_info = results
-    console.log("Row Inserted Successfully to officer dept");
-  });
-  res.redirect("/hiring")
-  }else{
-    res.render("hiring",{errord:"Officersid or dept id"})
-  }
+  res.render("hiring",{successd:"offices"})
+}
+else{
+  res.render("hiring",{errord:"Department no "+deptId+" Mojood nhi hai"})
+}
   
 })
+
 
 app.post('/departmentdata', (req, res) => {
   let postalCode = req.body.postalCode;

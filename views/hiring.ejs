@@ -149,7 +149,10 @@ strong{
                       </div>
                 </div>
                 <% if (locals.errord) { %>
-                    <p style="color: red;">Sorry error Occured Due to <%= errord %> you might using duplicates</p>
+                    <p style="color: red;">Error Occured <%= errord %> </p>
+                <%} %>
+                <% if (locals.successd) { %>
+                    <p style="color: green;">Row Sucessfully Added to database <%= successd %> </p>
                 <%} %>
             <h1 style="padding-top: 20px;">CopCompanion Window</h1>
             <div id="formWindow">
