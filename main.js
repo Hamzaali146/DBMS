@@ -213,10 +213,11 @@ else{
 app.post('/departmentdata', (req, res) => {
   let postalCode = req.body.postalCode;
   let deptName = req.body.deptName;
-  let Location = req.body.Location;
+  let numOfficers = req.body.numOfficers;
   let landLine = req.body.landLine;
-  let sql = `INSERT INTO POLICE_DEPARTMENT (POSTAL_CODE, DEPT_NAME, LOCATION, LAND_LINE_NUM) 
-           VALUES ('${parseInt(postalCode)}', '${deptName}', '${Location}', '${parseInt(landLine)}')`;
+  let areaId = req.body.areaId;   
+  let sql = `INSERT INTO DEPT_INFO (AREA_ID,POSTAL_CODE, DEPT_NAME, NUMBER_OF_OFFICERS, LAND_LINE_NUM) 
+           VALUES ('${parseInt(areaId)}','${parseInt(postalCode)}', '${deptName}', '${numOfficers}', '${parseInt(landLine)}')`;
 
     connection.query(sql, (error, results, fields) => {
     if (error) {
@@ -226,7 +227,7 @@ app.post('/departmentdata', (req, res) => {
     // officers_info = results
     console.log("Department Inserted Successfully");
   });
-  res.render("hiring.ejs")
+  res.render("hiring",{successd:"Department"})
 })
 
 
