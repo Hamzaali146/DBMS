@@ -33,7 +33,7 @@ connection.query('SELECT * FROM OFFICERS_INFO', (error, results, fields) => {
     officers_info = results
     // console.log('Query results:', officers_info);
   });
-  connection.query('select * from OFFICERS_INFO natural join OFFICER_DEPT_INFO;', (error, results, fields) => {
+  connection.query('select * from OFFICER_DEPT_INFO natural join OFFICERS_INFO_B', (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
@@ -68,7 +68,7 @@ connection.query('SELECT * FROM CASE_INFO', (error, results, fields) => {
   // console.log('Query results:', cases);
 });
 
-connection.query('SELECT * FROM DEPT_INFO', (error, results, fields) => {
+connection.query('SELECT * FROM STATION_INFO', (error, results, fields) => {
   if (error) {
     console.error('Error connecting to MySQL:', error);
     return;
@@ -137,8 +137,8 @@ app.post('/submit', (req, res) => {
   let usName =req.body.usName;
   for (const key in officertabjoin) {
     const element = officertabjoin[key];
-    if(element.OFFICER_RANK == 'Senior Superintendent of Police (SSP)' && element.FIRST_NAME.toLowerCase()==usName.toLowerCase() && element.OFF_PASSWORD.toLowerCase() == answer.toLowerCase()){
-      res.render("admin",{name:element.FIRST_NAME.toLowerCase(),rank:element.OFFICER_ID})
+    if(element.OFFICER_RANK == 'Senior Superintendent of Police (SSP)' && element.BADGE_NUM.toLowerCase()==usName.toLowerCase() && element.OFF_PASSWORD.toLowerCase() == answer.toLowerCase()){
+      res.render("admin",{name:element.FIRST_NAME,rank:element.OFFICER_RANK})
     } else{
       for (const key in hr){
         const element = hr[key]
@@ -276,7 +276,7 @@ app.post('/recordsdata', (req, res) => {
 // API FOR ALL MY TABLES FROM MYSQL DATABASE
 
 app.post('/officer', (req, res) => {
-  res.json(officers_info)
+  res.json(officertabjoin)
 })
 
 app.post('/officerdept', (req, res) => {
