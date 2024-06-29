@@ -10,17 +10,24 @@ function addOfficer(){
     </h1> 
 
     <div class="answer-container" >
-      <input type="text" name="deptId" id="deptId" placeholder="Dept ID" autocomplete="off"  >
-    </div>
-    <div class="answer-container" >
-      <input type="text" name="badgeNum" id="badgeNum" placeholder="Badge Num"autocomplete="off" >
-    </div>
-    <div class="answer-container" >
       <input type="text" name="firstNum" id="firstNum" placeholder="First Name"autocomplete="off" >
     </div>
     <div class="answer-container" >
       <input type="text" name="lastNum" id="lastNum" placeholder="Last Name"autocomplete="off" >
     </div>
+    <div class="answer-container" >
+      <input type="text" name="cnic" id="cnic" placeholder="Cnic Number" autocomplete="off" maxlength="13"  onblur="validateCNIC(this)" required>
+    </div>
+    <div class="answer-container" >
+      <input type="text" name="address" id="cnic" placeholder="Address" autocomplete="off"required>
+    </div>
+    <div class="answer-container" >
+      <input type="text" name="deptId" id="deptId" placeholder="Station  ID" autocomplete="off"  >
+    </div>
+    <div class="answer-container" >
+      <input type="text" name="badgeNum" id="badgeNum" placeholder="Badge Num"autocomplete="off" maxlength="6">
+    </div>
+    
     <div class="answer-container" >
       <input type="text" name="ContactNum" id="ContactNum" placeholder="Contact Number"autocomplete="off" >
     </div>
@@ -29,12 +36,6 @@ function addOfficer(){
     </div>
     <div class="answer-container" >
       <input type="email" name="email" id="email" placeholder="Email"autocomplete="off" >
-    </div>
-    <div class="answer-container" >
-      <input type="date" name="dob" id="dob" placeholder="Date Of Birth"autocomplete="off" >
-    </div>
-    <div class="answer-container" >
-      <input type="date" name="hiringDate" id="hiringDate" placeholder="Hiring date"autocomplete="off" >
     </div>
     <div class="answer-container" >
         <select name="officerRank" id="officerRank" size="1" required> 
@@ -75,6 +76,14 @@ function addOfficer(){
       Inspector General of Police (IGP)
       </option>
     </select> 
+    </div>
+    <p>DOB</p>
+    <div class="answer-container" >
+      <input type="date" name="dob" id="dob" placeholder="Date Of Birth"autocomplete="off" >
+    </div>
+    <p>hiring Date</p>
+    <div class="answer-container" >
+      <input type="date" name="hiringDate" id="hiringDate" placeholder="Hiring date"autocomplete="off" >
     </div>
 
     <button type="submit">Add To Database
@@ -150,7 +159,22 @@ function addDepartment(){
 
 </form>`
 }
-function addCases(){
+async function addCases(){
+  const totalRecordRaw = await fetch("/record", { method: "POST" });
+  const totalRecord = await totalRecordRaw.json();
+  // Extract officer IDs
+  const officerIds = [];
+  const casesIDD = []
+  totalRecord.forEach(element => {
+    officerIds.push(element.INVESTIGATING_OFFICER_ID);
+    casesIDD.push(element.CRIME_ID)
+  });
+
+  // console.log(officerIds);
+
+  // Generate options for the officer IDs
+  let options = officerIds.map(id => `<option value="${id}">${id}</option>`).join('');
+  let optionsCrime = casesIDD.map(id => `<option value="${id}">${id}</option>`).join('');
   document.getElementById("formWindow").innerHTML = ""
   document.getElementById("formWindow").innerHTML = `<form class="container" action="/casesdata" method="post">
   <div class="horizontal-container">
@@ -161,17 +185,24 @@ function addCases(){
   </div>
   </h1> 
 
+  <div class="answer-container">
+        <select name="investigating_officer_id" id="investigating_officer_id" required>
+          <option value="" disabled selected>Select Investigating Officer ID</option>
+          ${options}
+        </select>
+      </div>
+  <div class="answer-container">
+        <select name="crimeId" id="crimeId" required>
+          <option value="" disabled selected>Select Crime ID</option>
+          ${optionsCrime}
+        </select>
+      </div>
   <div class="answer-container" >
-    <input type="text" name="caseId" id="officerId" placeholder="caseId" autocomplete="off" >
+    <input type="text" name="description" id="description" placeholder="Case Description" autocomplete="off" >
   </div>
+  <p>dateOpened</p>
   <div class="answer-container" >
-    <input type="text" name="investigating_officer_id" id="deptId" placeholder="Investigating officer ID" autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="description" id="badgeNum" placeholder="Case Description" autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="date" name="dateOpened" id="firstNum" placeholder="Date opened"autocomplete="off" >
+    <input type="date" name="dateOpened" id="dateOpened" placeholder="Date opened"autocomplete="off" >
   </div>
   <button type="submit">Add To Database
       </button>
@@ -179,46 +210,57 @@ function addCases(){
 </form>`
 }
 
-function addRecords(){
-  document.getElementById("formWindow").innerHTML = ""
-  document.getElementById("formWindow").innerHTML = `<form class="container" action="/recordsdata" method="post">
-  <div class="horizontal-container">
-    <h3 class="sitetitle">
-      Add Criminal Records in CopCompanion Database!
-    </h3>
-    
-  </div>
-  </h1> 
+async function addRecords() {
+  // Fetch the total records from the server
+  const totalRecordRaw = await fetch("/record", { method: "POST" });
+  const totalRecord = await totalRecordRaw.json();
 
-  <div class="answer-container" >
-    <input type="text" name="recordId" id="officerId" placeholder="recordId" autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="areaCode" id="deptId" placeholder="Area Code" autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="suspect" id="badgeNum" placeholder="Suspect Name" autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="crimeType" id="firstNum" placeholder="Crime Type"autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="crimeStatus" id="firstNum" placeholder="Crime Status"autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="description" id="firstNum" placeholder="Criminal Description"autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="text" name="investigating_officer_id" id="firstNum" placeholder="Investigating officer Id"autocomplete="off" >
-  </div>
-  <div class="answer-container" >
-    <input type="date" name="datecommit" id="firstNum" placeholder="Date Commited"autocomplete="off" >
-  </div>
-  <button type="submit">Add To Database
-      </button>
+  // Extract officer IDs
+  const officerIds = [];
+  totalRecord.forEach(element => {
+    officerIds.push(element.INVESTIGATING_OFFICER_ID);
+  });
 
-</form>`
+  // console.log(officerIds);
+
+  // Generate options for the officer IDs
+  let options = officerIds.map(id => `<option value="${id}">${id}</option>`).join('');
+
+  document.getElementById("formWindow").innerHTML = `
+    <form class="container" action="/recordsdata" method="post">
+      <div class="horizontal-container">
+        <h3 class="sitetitle">Add Criminal Records in CopCompanion Database!</h3>
+      </div>
+      <div class="answer-container">
+        <input type="text" name="deptID" id="deptID" placeholder="Dept ID" autocomplete="off">
+      </div>
+      <div class="answer-container">
+        <input type="text" name="postalCode" id="postalCode" placeholder="postal Code" autocomplete="off">
+      </div>
+      <div class="answer-container">
+        <input type="text" name="suspect" id="suspect" placeholder="Suspect Name" autocomplete="off">
+      </div>
+      <div class="answer-container">
+        <input type="text" name="crimeType" id="crimeType" placeholder="Crime Type" autocomplete="off">
+      </div>
+      <div class="answer-container">
+        <input type="text" name="description" id="description" placeholder="Criminal Description" autocomplete="off">
+      </div>
+      <div class="answer-container">
+        <select name="investigating_officer_id" id="investigating_officer_id" required>
+          <option value="" disabled selected>Select Investigating Officer ID</option>
+          ${options}
+        </select>
+      </div>
+      <p>Date Committed</p>
+      <div class="answer-container">
+        <input type="date" name="datecommit" id="datecommit" placeholder="Date Committed" autocomplete="off">
+      </div>
+      <button type="submit">Add To Database</button>
+    </form>
+  `;
 }
+
 
 // function myFunction(){
 //     let officerIdValue = document.getElementById("officerId").value;

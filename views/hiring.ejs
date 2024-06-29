@@ -101,7 +101,7 @@ strong{
 .container {
       max-width: 600px;
       margin: 0 auto;
-      padding: 20px;
+      /* padding: 20px; */
       background-color: #f9f9f9;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -115,12 +115,9 @@ strong{
       color: #333;
       margin: 0;
     }
-    .answer-container {
-      margin-bottom: 15px;
-    }
     input[type="text"], select {
       width: 100%;
-      padding: 10px;
+      /* padding: 10px; */
       border: 1px solid #ccc;
       border-radius: 5px;
       box-sizing: border-box;
@@ -143,6 +140,7 @@ strong{
       height: 40px;
     }
     </style>
+
 </head>
 
 <body>
@@ -209,6 +207,15 @@ strong{
         <!-- <%- include('partials/footer.ejs') %> -->
         <script src="hiring_backend.js" ></script>
         <script src="connectionDb.js"></script>
+        <script>
+          function validateCNIC(input) {
+            const cnicPattern = /^[0-9]{13}$/;
+            if (!cnicPattern.test(input.value)) {
+                alert("Please enter a valid 13-digit CNIC number.");
+                input.value = "";
+            }
+        }
+        </script>
 </body>
 
 </html>
