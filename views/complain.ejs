@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complain</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>File a Complaint</title>
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/complain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">  
     <link rel="manifest" href="favicon/site.webmanifest">
+
     <style>
         .hero{
             background-color: rgba(128, 128, 128, 0.096);
@@ -22,13 +24,35 @@
 </head>
 <body>
     <%- include('partials/header.ejs') %>
-    <h1>Register your Complain</h1>
-    <div class="hero">
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi blanditiis fugiat corrupti, possimus cupiditate quisquam doloribus minus nihil itaque sit dolore excepturi illum omnis dignissimos amet aliquam! Distinctio velit, esse consectetur modi eligendi blanditiis, molestiae, consequatur accusamus deserunt ipsam corrupti veniam nisi exercitationem voluptas. Delectus voluptates adipisci exercitationem, impedit libero quidem animi rerum architecto rem perspiciatis dignissimos laborum expedita enim voluptate iusto velit. Ad tempora repellendus corporis debitis, doloremque omnis sequi! Inventore consequuntur aspernatur consequatur modi quidem quibusdam temporibus, veritatis, repellendus rerum, labore vero aliquid provident? Mollitia veritatis ad quo qui nobis, at molestias temporibus ipsam reprehenderit minima voluptatem deserunt, fugiat dolor velit voluptate quia magnam odit quibusdam nemo corporis. Quam autem minima omnis architecto odio unde? Ipsam quae obcaecati quasi repellendus repellat ratione explicabo, labore itaque facere corrupti et aut animi quisquam, eum aperiam, excepturi eveniet architecto. Blanditiis labore soluta error voluptatem odio. Dolorem odio non natus rerum itaque!
-    </p>
+    <div class="container">
+        <h1>File a Complaint</h1>
+        <form id="complaintForm" action="/submit_complaint" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="complaint">Complaint:</label>
+            <textarea id="complaint" name="complaint" rows="4" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
     </div>
     <%- include('partials/footer.ejs') %>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('complaintForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Complaint Submitted Successfully!');
+        form.reset();
+    });
+});
 
+    </script>
 </body>
 </html>

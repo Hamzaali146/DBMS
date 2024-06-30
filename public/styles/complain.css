@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+h1 {
+    color: #ff6f00;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: slideDown 1s ease-out;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 1.5s ease-out;
+}
+
+label {
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+input, textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #ff6f00;
+}
+
+button {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: fadeIn 2s ease-out;
+}
+
+button:hover {
+    background-color: #e65a00;
+    transform: translateY(-3px);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

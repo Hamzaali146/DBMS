@@ -171,3 +171,31 @@ body {
   .my-float{
     margin-top:16px;
   }
+
+
+  button {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    /* animation: fadeIn 2s ease-out; */
+}
+
+button:hover {
+    background-color: #e65a00;
+    transform: translateY(-3px);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
