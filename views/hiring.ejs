@@ -176,7 +176,7 @@ strong{
                         <div class="dropdown-content">
                             <button class="utilitybtn" onclick="deleteOfficer()">Officers</button>
                             <button class="utilitybtn" onclick="">Criminal Records</button>
-                            <button class="utilitybtn" onclick="">Cases</button>
+                            <button class="utilitybtn" onclick="deletecase()">Cases</button>
                             <button class="utilitybtn" onclick="">Departments</button>
                         </div>
                       </div>
@@ -196,6 +196,9 @@ strong{
                 <% if (locals.successd) { %>
                     <p style="color: green;">Row Sucessfully Added to database <%= successd %> </p>
                 <%} %>
+                <% if (locals.successdel) { %>
+                  <p style="color: peru;">Row Sucessfully deleted to database <%= successdel %> </p>
+              <%} %>
             <h1 style="padding-top: 20px;">محافظ</h1>
             <div id="formWindow">
             </div>

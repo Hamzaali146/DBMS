@@ -298,58 +298,73 @@ app.post('/recordsdata', (req, res) => {
 })
 
 app.post('/deleteofficer', (req, res) => {
-  let officerCnic = req.body.officerCnic
-  let name,lname,address
+  let officerCnic = req.body.officerCnic;
+  let name, lname, address;
+
   officertabjoin.forEach(element => {
-    if(element.CNIC === parseInt(officerCnic)){
-        name = element.FIRST_NAME
-        lname = element.LAST_NAME
-        address = element.ADDRESS
-        // console.log(name)
-        let sql = `DELETE FROM OFFICER_DEPT_INFO WHERE CNIC = ${parseInt(officerCnic)};`;
+    if (element.CNIC === parseInt(officerCnic)) {
+      name = element.FIRST_NAME;
+      lname = element.LAST_NAME;
+      address = element.ADDRESS;
 
-    connection.query(sql, (error, results, fields) => {
-    if (error) {
-      console.error('Error connecting to MySQL:', error);
-      return;
+      // First delete from CASE_INFO
+      let sqlCaseInfo = `DELETE FROM CASE_INFO WHERE INVESTIGATING_OFFICER_ID IN (SELECT BADGE_NUM FROM OFFICER_DEPT_INFO WHERE CNIC = ${parseInt(officerCnic)});`;
+      connection.query(sqlCaseInfo, (error, results, fields) => {
+        if (error) {
+          console.error('Error deleting from CASE_INFO:', error);
+          return;
+        }
+        console.log("Records deleted from CASE_INFO successfully");
+
+        // Then delete from OFFICER_DEPT_INFO
+        let sqlOfficerDeptInfo = `DELETE FROM OFFICER_DEPT_INFO WHERE CNIC = ${parseInt(officerCnic)};`;
+        connection.query(sqlOfficerDeptInfo, (error, results, fields) => {
+          if (error) {
+            console.error('Error deleting from OFFICER_DEPT_INFO:', error);
+            return;
+          }
+          console.log("Records deleted from OFFICER_DEPT_INFO successfully");
+
+          // Then delete from OFFICERS_INFO_A
+          let sqlinfoA = `DELETE FROM OFFICERS_INFO_A WHERE FIRST_NAME = '${name}' AND LAST_NAME = '${lname}' AND ADDRESS = '${address}';`;
+          connection.query(sqlinfoA, (error, results, fields) => {
+            if (error) {
+              console.error('Error deleting from OFFICERS_INFO_A:', error);
+              return;
+            }
+            console.log("Records deleted from OFFICERS_INFO_A successfully");
+
+            // Finally delete from OFFICERS_INFO_B
+            let sql = `DELETE FROM OFFICERS_INFO_B WHERE CNIC = ${parseInt(officerCnic)};`;
+            connection.query(sql, (error, results, fields) => {
+              if (error) {
+                console.error('Error deleting from OFFICERS_INFO_B:', error);
+                return;
+              }
+              console.log("Officer deleted from OFFICERS_INFO_B successfully");
+
+              res.render("hiring", { successdel: "officers" });
+            });
+          });
+        });
+      });
     }
-    // officers_info = results
-    console.log("Department deleted Successfully");
   });
-
-    }
-    
-  });
-
-  res.render("hiring",{successd:"Records"})
-})
-
+});
 
 app.post('/deletecase', (req, res) => {
-  let officerCnic = req.body.officerCnic
-  let name,lname,address
-  officertabjoin.forEach(element => {
-    if(element.CNIC === parseInt(officerCnic)){
-        name = element.FIRST_NAME
-        lname = element.LAST_NAME
-        address = element.ADDRESS
-        // console.log(name)
-        let sql = `DELETE FROM OFFICER_DEPT_INFO WHERE CNIC = ${parseInt(officerCnic)};`;
-
-    connection.query(sql, (error, results, fields) => {
+  let caseIDopt = req.body.caseIDopt
+  let sql = `DELETE FROM CASE_INFO WHERE CASE_ID = ${parseInt(caseIDopt)};`;
+  connection.query(sql, (error, results, fields) => {
     if (error) {
       console.error('Error connecting to MySQL:', error);
       return;
     }
     // officers_info = results
-    console.log("Department deleted Successfully");
+    console.log("case deleted Successfully");
   });
 
-    }
-    
-  });
-
-  res.render("hiring",{successd:"Records"})
+  res.render("hiring",{successdel:"case"})
 })
 
 

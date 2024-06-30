@@ -262,6 +262,9 @@ async function addRecords() {
 }
 
 
+
+
+
 // function myFunction(){
 //     let officerIdValue = document.getElementById("officerId").value;
 //     let deptIdValue = document.getElementById("deptId").value;
@@ -315,3 +318,44 @@ async function deleteOfficer() {
     document.getElementById("formWindow").innerHTML = `<p>Error fetching officer data. Please try again later.</p>`;
   }
 }
+
+
+async function deletecase() {
+  try {
+    const totalCaseRaw = await fetch("/case", { method: "POST" });
+    if (!totalCaseRaw.ok) {
+      throw new Error(`HTTP error! status: ${totalCaseRaw.status}`);
+    }
+    const totalCase = await totalCaseRaw.json();
+
+    // cnic nikal rahe hain
+    const caseID = []
+    totalCase.forEach(element => {
+      caseID.push(element.CASE_ID);
+    });
+    // const officerCnic = cnicidd.map(element => element.cnic); // Ensure field names match your database
+
+    // Generate options for the officer CNICs
+    let options = caseID.map(caseid => `<option value="${caseid}">${caseid}</option>`).join('');
+
+    document.getElementById("formWindow").innerHTML = `
+      <form class="container" action="/deletecase" method="post">
+        <div class="horizontal-container">
+          <h3 class="sitetitle">Delete cases from CopCompanion Database!</h3>
+        </div>
+        <div class="answer-container">
+          <select name="caseIDopt" id="caseIDopt" required>
+            <option value="" disabled selected>Select Officer CNIC</option>
+            ${options}
+          </select>
+        </div>
+        <button type="submit">Delete From Database</button>
+      </form>
+    `;
+  } catch (error) {
+    console.error('Error fetching case data:', error);
+    document.getElementById("formWindow").innerHTML = `<p>Error fetching case data. Please try again later.</p>`;
+  }
+}
+
+
