@@ -297,6 +297,62 @@ app.post('/recordsdata', (req, res) => {
   res.render("hiring",{successd:"Records"})
 })
 
+app.post('/deleteofficer', (req, res) => {
+  let officerCnic = req.body.officerCnic
+  let name,lname,address
+  officertabjoin.forEach(element => {
+    if(element.CNIC === parseInt(officerCnic)){
+        name = element.FIRST_NAME
+        lname = element.LAST_NAME
+        address = element.ADDRESS
+        // console.log(name)
+        let sql = `DELETE FROM OFFICER_DEPT_INFO WHERE CNIC = ${parseInt(officerCnic)};`;
+
+    connection.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // officers_info = results
+    console.log("Department deleted Successfully");
+  });
+
+    }
+    
+  });
+
+  res.render("hiring",{successd:"Records"})
+})
+
+
+app.post('/deletecase', (req, res) => {
+  let officerCnic = req.body.officerCnic
+  let name,lname,address
+  officertabjoin.forEach(element => {
+    if(element.CNIC === parseInt(officerCnic)){
+        name = element.FIRST_NAME
+        lname = element.LAST_NAME
+        address = element.ADDRESS
+        // console.log(name)
+        let sql = `DELETE FROM OFFICER_DEPT_INFO WHERE CNIC = ${parseInt(officerCnic)};`;
+
+    connection.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error connecting to MySQL:', error);
+      return;
+    }
+    // officers_info = results
+    console.log("Department deleted Successfully");
+  });
+
+    }
+    
+  });
+
+  res.render("hiring",{successd:"Records"})
+})
+
+
 // API FOR ALL MY TABLES FROM MYSQL DATABASE
 
 app.post('/officer', (req, res) => {

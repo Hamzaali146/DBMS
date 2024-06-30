@@ -277,3 +277,41 @@ async function addRecords() {
 //     console.log(deptIdValue,typeof(parseInt(deptIdValue)))
 //     console.log(ContactNumValue,typeof(parseInt(ContactNumValue)))
 // }
+
+async function deleteOfficer() {
+  try {
+    const totalRecordRaw = await fetch("/officer", { method: "POST" });
+    if (!totalRecordRaw.ok) {
+      throw new Error(`HTTP error! status: ${totalRecordRaw.status}`);
+    }
+    const totalRecord = await totalRecordRaw.json();
+
+    // cnic nikal rahe hain
+    const cnicidd = []
+    totalRecord.forEach(element => {
+      cnicidd.push(element.CNIC);
+    });
+    // const officerCnic = cnicidd.map(element => element.cnic); // Ensure field names match your database
+
+    // Generate options for the officer CNICs
+    let options = cnicidd.map(cnic => `<option value="${cnic}">${cnic}</option>`).join('');
+
+    document.getElementById("formWindow").innerHTML = `
+      <form class="container" action="/deleteofficer" method="post">
+        <div class="horizontal-container">
+          <h3 class="sitetitle">Delete Officer from CopCompanion Database!</h3>
+        </div>
+        <div class="answer-container">
+          <select name="officerCnic" id="officerCnic" required>
+            <option value="" disabled selected>Select Officer CNIC</option>
+            ${options}
+          </select>
+        </div>
+        <button type="submit">Delete From Database</button>
+      </form>
+    `;
+  } catch (error) {
+    console.error('Error fetching officer data:', error);
+    document.getElementById("formWindow").innerHTML = `<p>Error fetching officer data. Please try again later.</p>`;
+  }
+}
