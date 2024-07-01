@@ -42,8 +42,8 @@ async function myFunction() {
                 Name Of Officers : <strong>${element.FIRST_NAME}</strong><br>
                 Last Name : <strong>${element.LAST_NAME}</strong><br>
                 Badge Number : <strong>${element.BADGE_NUM}</strong><br>
-                Contact Number : <strong>${element.CONTACT_NUM}</strong><br>
-                Dept Id : <strong>${element.DEPT_ID}</strong><br>
+                CNIC Number : <strong>${element.CNIC}</strong><br>
+                Dept Id : <strong>${element.STATION_ID}</strong><br>
                 Email Id : <strong>${element.EMAIL_ID}</strong><br>
                 Officer Rank : <strong>${element.OFFICER_RANK}</strong><br>
                 Hiring Date : <strong>${element.HIRING_DATE}</strong>

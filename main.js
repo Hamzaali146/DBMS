@@ -87,15 +87,15 @@ connection.query('SELECT * FROM DEPT_CRIME_INFO', (error, results, fields) => {
   // console.log(record.length)
 });
 
-connection.query('SELECT * FROM CRIME_DEPT_INFO', (error, results, fields) => {
-  if (error) {
-    console.error('Error connecting to MySQL:', error);
-    return;
-  }
-  record_info = results
-  // console.log('Query results:', record);
-  // console.log(record.length)
-});
+// connection.query('SELECT * FROM CRIME_DEPT_INFO', (error, results, fields) => {
+//   if (error) {
+//     console.error('Error connecting to MySQL:', error);
+//     return;
+//   }
+//   record_info = results
+//   // console.log('Query results:', record);
+//   // console.log(record.length)
+// });
 
 app.get('/', (req, res) => {
     let projectName = "Police Information System"
